@@ -64,6 +64,7 @@
 
 <body>
 <div class="container">
+	<jsp:include page="${path }/a10_admin/admin_header.jsp"></jsp:include>
 <p class="fs-1 text-lg-start">공지사항 등록</p><br><br>
 
 <div class="formdiv">
