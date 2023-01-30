@@ -2,7 +2,7 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
-public class rentalVo {
+public class RentalVo {
 	private int rentalNo;
 	private String memberDiv;
 	private String nonMemberName;
@@ -21,7 +21,7 @@ public class rentalVo {
 	/**
 	 * 
 	 */
-	public rentalVo() {
+	public RentalVo() {
 		super();
 	}
 	public int getRentalNo() {

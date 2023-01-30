@@ -2,7 +2,7 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
-public class cardVo {
+public class CardVo {
 	private String cardNo;
 	private String validity;
 	private String cardKind;
@@ -10,7 +10,7 @@ public class cardVo {
 	/**
 	 * 
 	 */
-	public cardVo() {
+	public CardVo() {
 		super();
 	}
 	public String getCardNo() {
