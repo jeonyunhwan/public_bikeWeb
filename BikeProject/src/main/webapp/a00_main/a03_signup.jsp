@@ -115,7 +115,7 @@ input[id="tab02"]:checked ~ .con2{
 .row{
 	margin-top: 1%;
 }
-.cerficationMsg{
+#cerficationMsg{
 	font-size: 0.6rem;
 	color:red;
 	font-weight: bold;
@@ -127,6 +127,13 @@ input[id="tab02"]:checked ~ .con2{
 <script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript">
+	$(document).ready(function(){
+		console.log("@2")
+		
+	});
+	console.log('##')
+</script>
 
 </head>
 
@@ -160,42 +167,63 @@ input[id="tab02"]:checked ~ .con2{
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="idInput">아이디</label></div>
 		<div class="col center"><input type="text" id="idInput" class="form-control" name="id" placeholder="영문, 숫자 포함 6~12자리"></div>
+<<<<<<< HEAD
 		<div class="col right"><button id ="idCkBtn" class="btn btn-primary" type="button">중복확인</button><span id="cerId" class="cerficationMsg"></span></div>
 		<input type="hidden" id="idck">
+=======
+		<div class="col right"><button class="btn btn-primary" type="button">중복확인</button></div>
+>>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="passInput">비밀번호</label></div>
 		<div class="col center"><input type="password" id="passInput" class="form-control" name="pass" placeholder="영문, 숫자, 특수문자 포함 8~12자리"></div>
-		<div class="col right"><span id="cerPass" class="cerficationMsg"></span></div>
+		<div class="col right"></div>
 		</div>
 		<div class="row">
 		<div class="col left"></div>
+<<<<<<< HEAD
 		<div class="col center"><input type="password" class="form-control" id="passInput2" placeholder="비밀번호 확인"></div>
 		<div class="col right"><span id="cerPass2" class="cerficationMsg"></span></div>
 		<input type="hidden" id="passck">
+=======
+		<div class="col center"><input type="password" class="form-control" name="pass2" placeholder="비밀번호 확인"></div>
+		<div class="col right"></div>
+>>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="nameInput">이름</label></div>
 		<div class="col center"><input type="text" id="nameInput" class="form-control" name="name" placeholder="이름 입력"></div>
+<<<<<<< HEAD
 		<div class="col right"><span id="cerName" class="cerficationMsg"></span></div>
 		<input type="hidden" id="nameck">
+=======
+		<div class="col right"></div>
+>>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="phoneInput">휴대전화</label></div>
 		<div class="col center"><input type="text" id="phoneInput" class="form-control" name="phoneNumber" placeholder="휴대전화번호 입력"></div>
 		<div class="col right"><button class="btn btn-primary" id="callCertification" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">인증요청</button></div>
+<<<<<<< HEAD
 		<input type="hidden" id="phoneck">
+=======
+>>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"></div>
+<<<<<<< HEAD
 		<div class="col center"><input type="text" id="certificationInput" class="form-control" placeholder="인증번호 입력"></div>
 		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerPhone" class="cerficationMsg"></span></div>
+=======
+		<div class="col center"><input type="text" id="certificationInput" class="form-control" name="certification" placeholder="인증번호 입력"></div>
+		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerficationMsg"></span></div>
+>>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="emailInput">이메일</label></div>
 		<div class="col center" style="justify-content: center;"><input type="text" id="emailInput" class="form-control email" name="email1" placeholder="이메일 아이디">
 				<span>@</span> <select class="form-select" aria-label="Default select example" name="email2">
-				  <option value="" >선택</option>
+				  <option value="0" selected>선택</option>
 				  <option>naver.com</option>
 				  <option>gmail.com</option>
 				  <option>hanmail.net</option>
@@ -211,7 +239,7 @@ input[id="tab02"]:checked ~ .con2{
 		<div class="col center"><input type="text" id="weightInput" class="form-control" value="0" name="weight" placeholder="입력하지 않으면 자동으로 65kg으로 설정됩니다"></div>
 		<div class="col right"><span id="cerWeight" class="cerficationMsg"></span></div>
 		</div>
-		<button class="nextbutton" id="regBtn" type="button" style="margin-top: 2%;">완료</button>
+		<button class="nextbutton" type="button" style="margin-top: 2%;">완료</button>
 		</form>
 		</div>
 		
@@ -251,22 +279,13 @@ input[id="tab02"]:checked ~ .con2{
 			alert("필수 항목을 체크해주세요")
 		}
 	})
-	
-	
 	let ranNum = 0;
 	$("#callCertification").click(function(e){
-		$("#cerPhone").text("")
-		let phoneVal = $("#phoneInput").val()
-		let invalidPhone = /^010\d{4}\d{4}$/;
-		
-		if(!invalidPhone.test(phoneVal)){
-			$("#cerPhone").text("유효하지 않는 전화번호입니다.")
-		}else{
 			e.preventDefault();
+			$("#cerficationMsg").text("")
 			$('#exampleModal').modal("show");
 			ranNum = parseInt(Math.random()*8999+1000)
-			$('.modal-body').text(ranNum)			
-		}
+			$('.modal-body').text(ranNum)
 	})
 
 	$("#btn-close").click(function(){
@@ -277,12 +296,14 @@ input[id="tab02"]:checked ~ .con2{
 				alert("확인되었습니다.")
 				$("#phoneck").val("check")
 			}else{
-				$("#cerPhone").text("인증번호가 일치하지 않습니다.")
+				console.log("불일치")
+				$("#cerficationMsg").text("인증번호가 일치하지 않습니다.")
 			}
 			
 		})
 	})
 	
+
 	
 	// 아이디 유효성 체크
 	$("#idCkBtn").click(function(){

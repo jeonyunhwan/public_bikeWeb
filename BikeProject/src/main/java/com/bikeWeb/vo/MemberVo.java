@@ -11,7 +11,6 @@ public class MemberVo {
 	private int weight;
 	private int totalDistance;
 	private String getCardNo;
-	
 	/**
 	 * 
 	 */

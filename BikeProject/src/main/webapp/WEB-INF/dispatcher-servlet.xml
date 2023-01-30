@@ -31,13 +31,13 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd   
       " >    
-
+   
       <context:component-scan base-package="bikeweb">
       	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
       	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
       	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
       </context:component-scan>
-	
+
 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 	 	destroy-method="close">
 	 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -50,19 +50,20 @@
   	 	<property name="dataSource" ref="dataSource"/>
   	 	<property name="configLocation" value="classpath:resource/mybatis.Spring.xml"/>
   	 </bean>
-  
+  	
   	  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   	  	<property name="basePackage" value="bikeweb.dao"/>
   	  </bean>
-  	    
+  	  
+  	 
   	   <bean id="btnViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
   	   	<property  name="order" value="0"/>
   	   </bean>
-
+  	
   	   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   	   	<property  name="order" value="1"/>
   	   </bean>
-  
+  	
   	   <bean  id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
   	   	<property name="contentType" value="text/html;charset=utf-8"/>
   	   </bean>

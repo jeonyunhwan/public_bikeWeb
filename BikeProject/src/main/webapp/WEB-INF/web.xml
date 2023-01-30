@@ -18,7 +18,9 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
-     <filter>
+  
+  <!-- 요청값에 대한 한글 encoding 위한 filtering 선언 -->
+   <filter>
 	   	<filter-name>encodingFilter</filter-name>
 	   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
    		<init-param>
@@ -30,5 +32,4 @@
   	<filter-name>encodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  
 </web-app>
