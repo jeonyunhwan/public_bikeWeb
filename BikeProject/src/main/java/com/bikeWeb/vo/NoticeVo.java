@@ -2,7 +2,7 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
-public class noticeVo {
+public class NoticeVo {
 	private String noticeno;
 	private String mgrid;
 	private Date writedate;
@@ -12,7 +12,7 @@ public class noticeVo {
 	/**
 	 * 
 	 */
-	public noticeVo() {
+	public NoticeVo() {
 		super();
 	}
 	public String getNoticeno() {

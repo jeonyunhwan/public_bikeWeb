@@ -2,7 +2,7 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
-public class qnaVo {
+public class QnaVo {
 	private String qno;
 	private Date writedate;
 	private String id;
@@ -19,7 +19,7 @@ public class qnaVo {
 	/**
 	 * 
 	 */
-	public qnaVo() {
+	public QnaVo() {
 		super();
 	}
 	public String getQno() {
