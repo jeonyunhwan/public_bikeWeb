@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-							
+		<typeAlias type="com.bikeWeb.vo.MemberVo" alias="member"/>				
 	</typeAliases>
 
 	<mappers>

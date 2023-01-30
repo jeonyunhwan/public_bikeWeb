@@ -1,5 +1,7 @@
 package bikeweb.dao;
 
-public interface UserDao {
+import com.bikeWeb.vo.MemberVo;
 
+public interface UserDao {
+	public void signup(MemberVo ins);
 }

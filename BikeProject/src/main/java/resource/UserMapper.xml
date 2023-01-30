@@ -5,6 +5,8 @@
  
 
   <mapper namespace="bikeweb.dao.UserDao">
-  
+  <insert id="signup" parameterType="member">
+  	INSERT INTO user1 values(#{id},#{pass},null,#{auth},#{name},#{phoneNumber},#{email},#{weight},null,null)
+  </insert>
   	
   </mapper> 
