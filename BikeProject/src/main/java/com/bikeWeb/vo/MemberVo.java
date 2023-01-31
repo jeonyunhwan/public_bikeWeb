@@ -1,6 +1,6 @@
 package com.bikeWeb.vo;
 
-public class memberVo {
+public class MemberVo {
 	private String id;
 	private String pass;
 	private String rentPass;
@@ -14,7 +14,7 @@ public class memberVo {
 	/**
 	 * 
 	 */
-	public memberVo() {
+	public MemberVo() {
 		super();
 	}
 	public String getId() {

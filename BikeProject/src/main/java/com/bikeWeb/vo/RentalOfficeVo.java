@@ -1,6 +1,6 @@
 package com.bikeWeb.vo;
 
-public class rentalOfficeVo {
+public class RentalOfficeVo {
 	private String startPlaceName;
 	private String endPlaceName;
 	private String loc;
@@ -13,7 +13,7 @@ public class rentalOfficeVo {
 	/**
 	 * 
 	 */
-	public rentalOfficeVo() {
+	public RentalOfficeVo() {
 		super();
 	}
 	public String getStartPlaceName() {

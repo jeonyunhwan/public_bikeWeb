@@ -115,7 +115,7 @@ input[id="tab02"]:checked ~ .con2{
 .row{
 	margin-top: 1%;
 }
-#cerficationMsg{
+.cerficationMsg{
 	font-size: 0.6rem;
 	color:red;
 	font-weight: bold;
@@ -163,11 +163,13 @@ input[id="tab02"]:checked ~ .con2{
 		</div>
 		
 		<div class="conbox con2">
-		<form>
+		<form id="frm01" method="post" action="${path }/signup.do">
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="idInput">아이디</label></div>
 		<div class="col center"><input type="text" id="idInput" class="form-control" name="id" placeholder="영문, 숫자 포함 6~12자리"></div>
-		<div class="col right"><button class="btn btn-primary" type="button">중복확인</button></div>
+		<div class="col right"><button id ="idCkBtn" class="btn btn-primary" type="button">중복확인</button><span id="cerId" class="cerficationMsg"></span></div>
+		<input type="hidden" id="idck">
+
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="passInput">비밀번호</label></div>
@@ -176,23 +178,26 @@ input[id="tab02"]:checked ~ .con2{
 		</div>
 		<div class="row">
 		<div class="col left"></div>
-		<div class="col center"><input type="password" class="form-control" name="pass2" placeholder="비밀번호 확인"></div>
-		<div class="col right"></div>
+		<div class="col center"><input type="password" class="form-control" id="passInput2" placeholder="비밀번호 확인"></div>
+		<div class="col right"><span id="cerPass2" class="cerficationMsg"></span></div>
+		<input type="hidden" id="passck">
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="nameInput">이름</label></div>
 		<div class="col center"><input type="text" id="nameInput" class="form-control" name="name" placeholder="이름 입력"></div>
-		<div class="col right"></div>
+		<div class="col right"><span id="cerName" class="cerficationMsg"></span></div>
+		<input type="hidden" id="nameck">
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="phoneInput">휴대전화</label></div>
-		<div class="col center"><input type="text" id="phoneInput" class="form-control" name="phone" placeholder="휴대전화번호 입력"></div>
+		<div class="col center"><input type="text" id="phoneInput" class="form-control" name="phoneNumber" placeholder="휴대전화번호 입력"></div>
 		<div class="col right"><button class="btn btn-primary" id="callCertification" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">인증요청</button></div>
+		<input type="hidden" id="phoneck">
 		</div>
 		<div class="row">
 		<div class="col left"></div>
-		<div class="col center"><input type="text" id="certificationInput" class="form-control" name="certification" placeholder="인증번호 입력"></div>
-		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerficationMsg"></span></div>
+		<div class="col center"><input type="text" id="certificationInput" class="form-control" placeholder="인증번호 입력"></div>
+		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerPhone" class="cerficationMsg"></span></div>
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="emailInput">이메일</label></div>
@@ -205,12 +210,14 @@ input[id="tab02"]:checked ~ .con2{
 				  <option>yahoo.co.kr</option>
 				</select>
 		</div>
+		<input type="hidden" name="email">
+		<input type="hidden" name="auth">
 		<div class="col right"></div>
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="weightInput">몸무게</label></div>
-		<div class="col center"><input type="text" id="weightInput" class="form-control" name="weight" placeholder="입력하지 않으면 자동으로 65kg으로 설정됩니다"></div>
-		<div class="col right"></div>
+		<div class="col center"><input type="text" id="weightInput" class="form-control" value="0" name="weight" placeholder="입력하지 않으면 자동으로 65kg으로 설정됩니다"></div>
+		<div class="col right"><span id="cerWeight" class="cerficationMsg"></span></div>
 		</div>
 		<button class="nextbutton" type="button" style="margin-top: 2%;">완료</button>
 		</form>
@@ -267,7 +274,7 @@ input[id="tab02"]:checked ~ .con2{
 		$("#checkCertification").click(function(){
 			if($("#certificationInput").val()==ranNum){
 				alert("확인되었습니다.")
-				// 인증번호랑 같은 번호를 입력했을 때 input hidden 만들어서 true가 되도록 하기
+				$("#phoneck").val("check")
 			}else{
 				console.log("불일치")
 				$("#cerficationMsg").text("인증번호가 일치하지 않습니다.")
@@ -276,5 +283,104 @@ input[id="tab02"]:checked ~ .con2{
 		})
 	})
 	
+
+	
+	// 아이디 유효성 체크
+	$("#idCkBtn").click(function(){
+		let idVal = $("#idInput").val()
+		let invalidId = /(?=.*\d)(?=.*[a-zA-Z]){6,12}/
+		if( !invalidId.test(idVal) ){ // db에 아이디 있는지도 추가해야댐
+			$("#cerId").text("유효하지 않는 아이디입니다.")	
+			$("#idInput").val("")
+			$("#idInput").focus()
+		}else{
+			$("#cerId").text("사용가능한 아이디입니다.")	
+			$("#idck").val("check")
+		}
+	})
+	// 비밀번호 유효성 체크
+	$("#passInput").keyup(function(){
+		let passVal = $("#passInput").val()
+		let invalidPass = /(?=.*\d)(?=.*[a-zA-Z])(?=.*?[#?!@$%^&*-]).{8,12}/; 	
+		if(!invalidPass.test(passVal)){
+			$("#cerPass").text("유효하지 않는 비밀번호입니다.")
+		}else{
+			$("#cerPass").text("사용가능한 비밀번호입니다.")
+		}
+	})
+	
+	$("#passInput2").keyup(function(){
+		let passVal = $("#passInput").val()
+		let passVal2 = $("#passInput2").val()
+		if(passVal==passVal2){
+			$("#cerPass2").text("비밀번호가 일치합니다.")
+			$("#passck").val("check")
+		}else{
+			$("#cerPass2").text("비밀번호가 일치하지 않습니다.")
+		}
+	})
+	// 이름 유효성 체크
+	$("#nameInput").keyup(function(){
+		let nameVal = $("#nameInput").val()
+		let invalidName = /^[가-힣a-zA-Z]+$/
+		if(nameVal==""){
+			$("#cerName").text("")
+		}else{
+			if(!invalidName.test(nameVal)){
+				$("#cerName").text("이름은 영문 혹은 한글로 입력하세요.")
+			}else{
+				$("#cerName").text("")
+				$("#nameck").val("check")
+			}
+		}
+	})
+	
+	$("#weightInput").keyup(function(){
+		let weightVal = $("#weightInput").val()
+		let invalidWeight = /^[0-9]+$/
+		if(weightVal==""){
+			$("#cerWeight").text("")
+		}else{
+			if(!invalidWeight.test(weightVal)){
+				$("#cerWeight").text("숫자만 입력하세요.")
+			}else{
+				$("#cerWeight").text("")
+			}
+		}
+	})
+	
+
+	$("#regBtn").click(function(){
+		let idckVal = $("#idck").val()
+		let passckVal = $("#passck").val()
+		let phoneckVal = $("#phoneck").val()
+		let nameckVal = $("#nameck").val()
+		let weightVal = $("#weightInput").val()
+		let email1 = $("[name=email1]").val()
+		let email2 = $("[name=email2]").val()
+		let weightck = $("#cerWeight").text()
+		
+		
+		if(idckVal=="check" && passckVal=="check" && phoneckVal=="check" && nameckVal=="check" && email1!="" && email2!="" && weightck==""){
+			$("[name=email]").val(email1+"@"+email2)
+			$("[name=auth]").val("일반회원")
+			$("#frm01").submit()
+			var msg = "${msg.val}"
+			alert(msg)
+			// ajax로 db에 넣기
+			
+		}else{
+			console.log(idckVal)
+			console.log(passckVal)
+			console.log(phoneckVal)
+			console.log(nameckVal)
+			console.log(weightVal)
+			console.log(email1)
+			console.log(email2)
+			alert("빠트린 항목이 있는지 확인해주세요^^")
+		}
+	})
+	
+
 </script>
 </html>
