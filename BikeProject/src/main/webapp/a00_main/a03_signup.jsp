@@ -115,7 +115,7 @@ input[id="tab02"]:checked ~ .con2{
 .row{
 	margin-top: 1%;
 }
-#cerficationMsg{
+.cerficationMsg{
 	font-size: 0.6rem;
 	color:red;
 	font-weight: bold;
@@ -167,12 +167,9 @@ input[id="tab02"]:checked ~ .con2{
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="idInput">아이디</label></div>
 		<div class="col center"><input type="text" id="idInput" class="form-control" name="id" placeholder="영문, 숫자 포함 6~12자리"></div>
-<<<<<<< HEAD
 		<div class="col right"><button id ="idCkBtn" class="btn btn-primary" type="button">중복확인</button><span id="cerId" class="cerficationMsg"></span></div>
 		<input type="hidden" id="idck">
-=======
-		<div class="col right"><button class="btn btn-primary" type="button">중복확인</button></div>
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
+
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="passInput">비밀번호</label></div>
@@ -181,43 +178,26 @@ input[id="tab02"]:checked ~ .con2{
 		</div>
 		<div class="row">
 		<div class="col left"></div>
-<<<<<<< HEAD
 		<div class="col center"><input type="password" class="form-control" id="passInput2" placeholder="비밀번호 확인"></div>
 		<div class="col right"><span id="cerPass2" class="cerficationMsg"></span></div>
 		<input type="hidden" id="passck">
-=======
-		<div class="col center"><input type="password" class="form-control" name="pass2" placeholder="비밀번호 확인"></div>
-		<div class="col right"></div>
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="nameInput">이름</label></div>
 		<div class="col center"><input type="text" id="nameInput" class="form-control" name="name" placeholder="이름 입력"></div>
-<<<<<<< HEAD
 		<div class="col right"><span id="cerName" class="cerficationMsg"></span></div>
 		<input type="hidden" id="nameck">
-=======
-		<div class="col right"></div>
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="phoneInput">휴대전화</label></div>
 		<div class="col center"><input type="text" id="phoneInput" class="form-control" name="phoneNumber" placeholder="휴대전화번호 입력"></div>
 		<div class="col right"><button class="btn btn-primary" id="callCertification" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">인증요청</button></div>
-<<<<<<< HEAD
 		<input type="hidden" id="phoneck">
-=======
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"></div>
-<<<<<<< HEAD
 		<div class="col center"><input type="text" id="certificationInput" class="form-control" placeholder="인증번호 입력"></div>
 		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerPhone" class="cerficationMsg"></span></div>
-=======
-		<div class="col center"><input type="text" id="certificationInput" class="form-control" name="certification" placeholder="인증번호 입력"></div>
-		<div class="col right"><button class="btn btn-primary" id="checkCertification" type="button">확인</button> <span id="cerficationMsg"></span></div>
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
 		</div>
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="emailInput">이메일</label></div>
