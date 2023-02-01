@@ -75,8 +75,32 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+		$("#logBtn").click(function(){
+			login()
+		})
 	});
+	
+	function login(){
+		
+		$.ajax({
+		url:"${path}/login.do",
+		type:"post",
+		data:$("#frm").serialize(),
+		dataType:"json",
+		success:function(data){
+			var loginCk = data.loginCk
+			if(loginCk==1){
+				location.href="${path}/a00_main/a01_main.jsp"
+			}else{
+				alert("아이디와 비밀번호를 확인해주세요")
+			}
+			
+		},
+		error:function(err){
+			console.log(err)
+		}
+		})
+	}
 </script>
 </head>
 
@@ -85,13 +109,13 @@
 	<div class="justify-content-center text-center" style="width: 23rem;">
   	<img src="${path }/b01_img/logo.png" class="logo" alt="...">
   	<br><br><br><br>
-	    <form>
-	    	<input class="form-control" type="text" placeholder="아이디" aria-label="default input example">
-	    	<input class="form-control" type="password" placeholder="비밀번호" aria-label="default input example">
+	    <form id="frm">
+	    	<input class="form-control" name="id" type="text" placeholder="아이디" aria-label="default input example">
+	    	<input class="form-control" name="pass" type="password" placeholder="비밀번호" aria-label="default input example">
 	    	<input type="checkbox" value="" id="flexCheckDefault">
 			<label class="form-check-label" for="flexCheckDefault">로그인 상태 유지</label><br>
-			<button type="button" class="btn btn-success">로그인</button><br>
-			<a class="join" href="#">회원가입</a>
+			<button type="button" id="logBtn" class="btn btn-success">로그인</button><br>
+			<a class="join" href="${path}/a00_main/a03_signup.jsp">회원가입</a>
 			<a class="find" href="#">아이디/비밀번호 찾기</a><br>
 			<span class="snslogin">sns 로그인</span><br>
 			<button type="button" class="kakao"><img class="kakaoImg" src="${path }/b01_img/kakao.png" width="30px"></button>

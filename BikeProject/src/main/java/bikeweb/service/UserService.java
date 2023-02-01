@@ -23,4 +23,12 @@ public class UserService {
 		System.out.println(ins.getPhoneNumber());
 		dao.signup(ins);
 	}
+	
+	public int invalidId(String id) {
+		return dao.invalidId(id);
+	}
+	public int login(MemberVo login) {
+		return dao.login(login);
+	}
+	
 }

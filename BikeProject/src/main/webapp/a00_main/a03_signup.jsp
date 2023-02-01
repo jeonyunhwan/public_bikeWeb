@@ -295,15 +295,33 @@ input[id="tab02"]:checked ~ .con2{
 	$("#idCkBtn").click(function(){
 		let idVal = $("#idInput").val()
 		let invalidId = /(?=.*\d)(?=.*[a-zA-Z]){6,12}/
-		if( !invalidId.test(idVal) ){ // db에 아이디 있는지도 추가해야댐
+		if( !invalidId.test(idVal) ){ 
 			$("#cerId").text("유효하지 않는 아이디입니다.")	
-			$("#idInput").val("")
 			$("#idInput").focus()
 		}else{
-			$("#cerId").text("사용가능한 아이디입니다.")	
-			$("#idck").val("check")
+			$.ajax({
+				url:"${path}/invalidId.do",
+				type:"post",
+				data:"id="+idVal,
+				dataType:"json",
+				success:function(data){
+					var idCk = data.idCk
+					if(idCk==1){
+						$("#cerId").text("이미 등록된 아이디입니다.")
+						$("#idInput").focus()
+					}else{	
+						$("#cerId").text("사용가능한 아이디입니다.")	
+						$("#idck").val("check")					
+					}
+				},
+				error:function(err){
+					console.log(err)
+				}
+			})
+			
 		}
 	})
+	
 	// 비밀번호 유효성 체크
 	$("#passInput").keyup(function(){
 		let passVal = $("#passInput").val()
@@ -371,8 +389,7 @@ input[id="tab02"]:checked ~ .con2{
 			$("[name=email]").val(email1+"@"+email2)
 			$("[name=auth]").val("일반회원")
 			$("#frm01").submit()
-			var msg = "${msg.val}"
-			alert(msg)
+			alert("환영합니다! 회원가입이 완료되었습니다")
 			// ajax로 db에 넣기
 			
 		}else{

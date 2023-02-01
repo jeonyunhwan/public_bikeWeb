@@ -8,5 +8,13 @@
   <insert id="signup" parameterType="member">
   	INSERT INTO user1 values(#{id},#{pass},null,#{auth},#{name},#{phoneNumber},#{email},#{weight},null,null)
   </insert>
-  	
+  
+  <select id="invalidId" resultType="int" parameterType="string">
+  	select count(*) from user1 where id=#{id}
+  </select>	
+  
+  <select id="login" resultType="int" parameterType="member">
+  	SELECT COUNT(*) FROM user1 WHERE id=#{id} AND pass=#{pass}
+  </select>
+
   </mapper> 
