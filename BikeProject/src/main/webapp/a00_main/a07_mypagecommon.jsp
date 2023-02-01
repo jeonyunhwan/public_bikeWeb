@@ -17,7 +17,7 @@
 		margin-left:2%;
 	}
 	#greyBox{
-		background: rgb(122, 127, 130);
+		background: rgb(128, 138, 146);
 		opacity: 0.8;
 		width:100%;
 		height:70px;

@@ -4,7 +4,7 @@ CREATE TABLE getcard(
 	validity char(5),
 	cardkind varchar(20),
 	birthday date,
-	id varchar(30) /*ONSTRAINT getcard_id_fk REFERENCES user(id)*/
+	id varchar(30) /*CONSTRAINT getcard_id_fk REFERENCES user(id)*/
 );
 DROP TABLE getcard;
 
