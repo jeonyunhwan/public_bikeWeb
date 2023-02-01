@@ -61,10 +61,30 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>	
+		$("#logBtn").click(function(){
+			login()
 	});
+	function login(){
+		
+		$.ajax({
+		url:"${path}/login.do",
+		type:"post",
+		data:$("#frm").serialize(),
+		dataType:"json",
+		success:function(data){
+			var loginCk = data.loginCk
+			if(loginCk==1){
+				location.href="${path}/a00_main/a01_main.jsp"
+			}else{
+				alert("아이디와 비밀번호를 확인해주세요")
+			}
+			
+		},
+		error:function(err){
+			console.log(err)
+		}
+		})
+	}
 </script>
 </head>
 	
@@ -79,7 +99,7 @@
 		  <input type="checkbox" value="" id="flexCheckDefault">
 		  <label class="form-check-label" for="flexCheckDefault">자동로그인</label>
 		  <a class="findInfo text-end" href="#">아이디/비밀번호 찾기</a><br>
-		  <button type="button" class="btn btn-success">로그인</button><br>
+		  <button type="button" id="logBtn" class="btn btn-success">로그인</button><br>
 		  <button type="button" class="btn btn-secondary">비회원</button>	  
 		</form>		
 	</div>

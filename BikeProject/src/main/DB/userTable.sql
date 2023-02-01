@@ -16,3 +16,5 @@ DROP TABLE getcard;
 SELECT * FROM USER1;
 
 INSERT INTO user1 values('dnjswn1','dnjswn123','','사용자','홍길동','0102353776','dnjswn@gmail.com',65,'','');
+
+SELECT COUNT(*) FROM user1 WHERE id='dnjsw'; 

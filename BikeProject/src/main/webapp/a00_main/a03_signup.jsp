@@ -174,7 +174,7 @@ input[id="tab02"]:checked ~ .con2{
 		<div class="row">
 		<div class="col left"><label class="formLabel" for="passInput">비밀번호</label></div>
 		<div class="col center"><input type="password" id="passInput" class="form-control" name="pass" placeholder="영문, 숫자, 특수문자 포함 8~12자리"></div>
-		<div class="col right"></div>
+		<div class="col right"><span id="cerPass" class="cerficationMsg"></span></div>
 		</div>
 		<div class="row">
 		<div class="col left"></div>
@@ -219,7 +219,7 @@ input[id="tab02"]:checked ~ .con2{
 		<div class="col center"><input type="text" id="weightInput" class="form-control" value="0" name="weight" placeholder="입력하지 않으면 자동으로 65kg으로 설정됩니다"></div>
 		<div class="col right"><span id="cerWeight" class="cerficationMsg"></span></div>
 		</div>
-		<button class="nextbutton" type="button" style="margin-top: 2%;">완료</button>
+		<button class="nextbutton" id="regBtn" type="button" style="margin-top: 2%;">완료</button>
 		</form>
 		</div>
 		
@@ -261,11 +261,17 @@ input[id="tab02"]:checked ~ .con2{
 	})
 	let ranNum = 0;
 	$("#callCertification").click(function(e){
+		let phoneVal = $("#phoneInput").val()
+		let invalidPhone = /^010?([0-9]{8})$/
+		if( !invalidPhone.test(phoneVal)){
+			$("#cerPhone").text("유효하지 않는 전화번호입니다.")
+		}else{
 			e.preventDefault();
-			$("#cerficationMsg").text("")
+			$("#cerPhone").text("")
 			$('#exampleModal').modal("show");
 			ranNum = parseInt(Math.random()*8999+1000)
 			$('.modal-body').text(ranNum)
+		}		
 	})
 
 	$("#btn-close").click(function(){
@@ -277,7 +283,7 @@ input[id="tab02"]:checked ~ .con2{
 				$("#phoneck").val("check")
 			}else{
 				console.log("불일치")
-				$("#cerficationMsg").text("인증번호가 일치하지 않습니다.")
+				$("#cerPhone").text("인증번호가 일치하지 않습니다.")
 			}
 			
 		})
@@ -289,15 +295,33 @@ input[id="tab02"]:checked ~ .con2{
 	$("#idCkBtn").click(function(){
 		let idVal = $("#idInput").val()
 		let invalidId = /(?=.*\d)(?=.*[a-zA-Z]){6,12}/
-		if( !invalidId.test(idVal) ){ // db에 아이디 있는지도 추가해야댐
+		if( !invalidId.test(idVal) ){ 
 			$("#cerId").text("유효하지 않는 아이디입니다.")	
-			$("#idInput").val("")
 			$("#idInput").focus()
 		}else{
-			$("#cerId").text("사용가능한 아이디입니다.")	
-			$("#idck").val("check")
+			$.ajax({
+				url:"${path}/invalidId.do",
+				type:"post",
+				data:"id="+idVal,
+				dataType:"json",
+				success:function(data){
+					var idCk = data.idCk
+					if(idCk==1){
+						$("#cerId").text("이미 등록된 아이디입니다.")
+						$("#idInput").focus()
+					}else{	
+						$("#cerId").text("사용가능한 아이디입니다.")	
+						$("#idck").val("check")					
+					}
+				},
+				error:function(err){
+					console.log(err)
+				}
+			})
+			
 		}
 	})
+	
 	// 비밀번호 유효성 체크
 	$("#passInput").keyup(function(){
 		let passVal = $("#passInput").val()
@@ -365,8 +389,7 @@ input[id="tab02"]:checked ~ .con2{
 			$("[name=email]").val(email1+"@"+email2)
 			$("[name=auth]").val("일반회원")
 			$("#frm01").submit()
-			var msg = "${msg.val}"
-			alert(msg)
+			alert("환영합니다! 회원가입이 완료되었습니다")
 			// ajax로 db에 넣기
 			
 		}else{
