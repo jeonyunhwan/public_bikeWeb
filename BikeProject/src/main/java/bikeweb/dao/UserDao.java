@@ -7,4 +7,7 @@ public interface UserDao {
 	
 	public int invalidId(String id);
 	public int login(MemberVo login);
+	
+	public MemberVo getId(String id);
+	public void uptInfo(MemberVo upt);
 }

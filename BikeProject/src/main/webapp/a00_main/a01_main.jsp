@@ -63,6 +63,7 @@
 	$(document).ready(function(){
 		$("#logBtn").click(function(){
 			login()
+		})
 	});
 	function login(){
 		
@@ -74,6 +75,7 @@
 		success:function(data){
 			var loginCk = data.loginCk
 			if(loginCk==1){
+				alert("로그인 성공") // 세션 처리해서 화면 바꾸기
 				location.href="${path}/a00_main/a01_main.jsp"
 			}else{
 				alert("아이디와 비밀번호를 확인해주세요")
@@ -93,10 +95,10 @@
 	<jsp:include page="${path }/a00_main/a00_header.jsp"></jsp:include>
 </div>	
 	<div class="text-center smlogin" style="width: 250px;height: 225px;padding: 20px 20px 20px 20px;">
-		<form class="form-floating">
-		  <input type="text" class="form-control" id="floatingInputValue" placeholder="아이디" value="">
-		  <input type="password" class="form-control" id="floatingInputValue" placeholder="비밀번호" value="">
-		  <input type="checkbox" value="" id="flexCheckDefault">
+		<form id="frm" class="form-floating">
+		  <input type="text" class="form-control" id="floatingInputValue" placeholder="아이디" name="id">
+		  <input type="password" class="form-control" sid="floatingInputValue" placeholder="비밀번호" name="pass">
+		  <input type="checkbox" id="flexCheckDefault">
 		  <label class="form-check-label" for="flexCheckDefault">자동로그인</label>
 		  <a class="findInfo text-end" href="#">아이디/비밀번호 찾기</a><br>
 		  <button type="button" id="logBtn" class="btn btn-success">로그인</button><br>

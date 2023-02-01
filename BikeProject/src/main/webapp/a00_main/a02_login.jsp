@@ -81,7 +81,6 @@
 	});
 	
 	function login(){
-		
 		$.ajax({
 		url:"${path}/login.do",
 		type:"post",
@@ -101,6 +100,7 @@
 		}
 		})
 	}
+	
 </script>
 </head>
 

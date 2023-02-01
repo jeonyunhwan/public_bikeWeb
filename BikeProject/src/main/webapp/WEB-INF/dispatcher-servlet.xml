@@ -41,9 +41,10 @@
 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 	 	destroy-method="close">
 	 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-	 	<property name="url" value="jdbc:oracle:thin:@223.26.137.39:1521:xe"/>
-	 	<property name="username" value="jyj"/>
-	 	<property name="password" value="1111"/>
+	 	<!-- jyj 서버로 연동 : ip주소 : 223.26.137.39 / id : jyj / pass : 1111 -->
+	 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+	 	<property name="username" value="scott"/>
+	 	<property name="password" value="tiger"/>
 	 </bean>
   
   	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

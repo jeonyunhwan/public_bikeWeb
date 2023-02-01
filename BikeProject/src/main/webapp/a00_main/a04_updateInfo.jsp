@@ -47,11 +47,14 @@ th{
 	font-size: 0.7rem;
 	color: gray;
 }
-#checkmsg, #checkmsg2, #checkmsg3{
+#checkmsg, #checkmsg2, #checkmsg3,#cerWeight{
 	font-size: 0.6rem; 
 	font-weight:bold;
 	color:red;
 	padding-left: 5px;
+}
+[name=newpass1]::placeholder{
+	font-size: 0.5rem;
 }
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
@@ -65,26 +68,34 @@ th{
 
 <body>
 	
-	<form >
+	<form id="uptFrm" >
 	<table class="table table-bordered">
 	<col width="30%">
-	<tr><th>아이디</th><td>현재 아이디</td></tr>
+	<tr><th>아이디</th><td id="loginId">현재 아이디</td></tr>
 	<tr><th>비밀번호</th><td><button id="passBtn" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#passModal">비밀번호 변경</button></td></tr>
-	<tr><th>이메일주소</th><td><input type="text" id="emailInput" class="form-control email" name="email1" placeholder="현재 이메일 아이디">
-				<span>@ </span><input type="text" id="emailInput2" class="form-control email" name="email2" placeholder="이메일 주소 입력" value="gmail.com">
-				 <select class="form-select" aria-label="Default select example" name="email2" id="emailsel">
+	<tr><th>이메일주소</th><td><input type="text" id="emailInput" class="form-control email" placeholder="현재 이메일 아이디">
+				<span>@ </span><input type="text" id="emailInput2" class="form-control email"  placeholder="이메일 주소 입력" value="gmail.com">
+				 <select class="form-select" aria-label="Default select example"  id="emailsel">
 				  <option value="0" selected>선택</option>
 				  <option>naver.com</option>
 				  <option>gmail.com</option>
 				  <option>hanmail.net</option>
 				  <option>yahoo.co.kr</option>
 				  <option value="1">직접입력</option>
-				</select></td></tr>
-	<tr><th>휴대전화번호</th><td>현재 핸드폰 번호&nbsp;&nbsp;<button id="phoneBtn" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#phoneModal">휴대전화 변경</button></td></tr>
-	<tr><th>체중</th><td><input type="text" id="weightInput" class="form-control" name="weight" placeholder="65"> kg</td></tr>
+				</select></td></tr> 
+	<tr><th>휴대전화번호</th><td><span id="loginPhone">현재 핸드폰 번호</span>&nbsp;&nbsp;<button id="phoneBtn" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#phoneModal">휴대전화 변경</button></td></tr>
+	<tr><th>체중</th><td><input type="text" id="weightInput" class="form-control" placeholder="65"> kg&nbsp;&nbsp;<span id="cerWeight"></span></td></tr>
 	</table>
+	<input type="hidden" name="id" id="formId"> 
 	<input type="hidden" name="pass" id="newpassFin"> 
-	<input type="hidden" name="phone" id="newphoneFin"> 
+	<input type="hidden" name="phoneNumber" id="newphoneFin"> 
+	<input type="hidden" name="email" id="neweamilFin"> 
+	<input type="hidden" name="weight" id="newweightFin"> 
+	<input type="hidden" id="passck">
+	<input type="hidden" id="phoneck">
+
+	
+
 	<button class="nextbutton" type="button" style="margin-top: 2%;">수정</button>
 	</form>
 	
@@ -97,11 +108,12 @@ th{
 		      </div>
 		      <div class="modal-body">
 		      	<form>
+		      	<input type="hidden" id="loginPass">
 		        현재 비밀번호 입력 : <input type="password" name="pass" id="originPass"> <button type="button" id="passCheck" class="btn btn-primary">확인</button><span id="checkmsg"></span><br>
 		        </form>
 		        <form>
 		        <div class="newpass">
-		        변경할 비밀번호 입력 : <input type="password" name="newpass1"><br>
+		        변경할 비밀번호 입력 : <input type="password" name="newpass1" placeholder="영문, 숫자, 특수문자 포함 8~12자리"><br>
 		        비밀번호 확인 : <input type="password" name="newpass2"><span id="checkmsg2"></span><br>
 		        </div>
 		        </form>
@@ -135,6 +147,9 @@ th{
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#formId").val('dnjswn123')
+		getInfo('dnjswn123') // 임의로 아이디의 정보 가져오기 (나중에 session으로 설정해놓은 아이디 가져와서 넣기)
+		
 		$("#passBtn").click(function(){
 			$('#passModal').modal("show")
 			$("#originPass").val("")
@@ -152,12 +167,12 @@ th{
 			$('#passModal').modal("hide")
 			$('#phoneModal').modal("hide")
 		})
-		
+		// 로그인한 아이디의 비밀번호와 일치하는지 확인
+		$("#passck").val("check")
 		$(".newpass").hide()
 		$("#passCheck").click(function(){
 			$("#checkmsg2").text("")
-			// ajax로 로그인한 회원의 비밀번호 가져와서 비교하기
-			if($("#originPass").val()==1111){	
+			if($("#originPass").val()==$("#loginPass").val()){	
 				$("#checkmsg").text("일치")
 				$(".newpass").show()
 			}else{
@@ -166,35 +181,49 @@ th{
 				$("[name=pass]").focus()
 			}
 		})
+		// 비밀번호 유효성 체크
 		let newPass=""
 		$("#passCheck2").click(function(){
-			if( $("[name=newpass1]").val()==$("[name=newpass2]").val() ){
-				$('#passModal').modal("hide")
-				newPass = $("[name=newpass1]").val()
-				$("#newpassFin").val(newPass)
-				
+			$("#passck").val("")
+			let passVal = $("[name=newpass1]").val()
+			let invalidPass = /(?=.*\d)(?=.*[a-zA-Z])(?=.*?[#?!@$%^&*-]).{8,12}/; 	
+			if(!invalidPass.test(passVal)){
+				$("#checkmsg2").text("유효하지 않는 비밀번호입니다.")
 			}else{
-				$("#checkmsg2").text("불일치")
-				$("[name=newpass1]").val("")
-				$("[name=newpass2]").val("")
-				$("[name=newpass1]").focus()
+				if( $("[name=newpass1]").val()==$("[name=newpass2]").val() ){
+					$('#passModal').modal("hide")
+					newPass = $("[name=newpass1]").val()
+					$("#newpassFin").val(newPass)
+					$("#passck").val("check")
+				}else{
+					$("#checkmsg2").text("불일치")
+					$("[name=newpass1]").val("")
+					$("[name=newpass2]").val("")
+					$("[name=newpass1]").focus()
+				}
 			}
+
 		})
 		
 		
-		
+		// 휴대전화번호 유효성 체크
+		$("#phoneck").val("check")
 		$("#phoneCheck").click(function(){
+			$("#phoneck").val("")
 			let newPVal = $("[name=newPhone]").val()
-			if(newPVal.length==11 && newPVal.substring(0,3)=='010'){
-				$('#phoneModal').modal("hide")
-				$("#newphoneFin").val(newPVal)
-			}else{
+			let invalidPhone = /^010?([0-9]{8})$/
+			if(!invalidPhone.test(newPVal)){
 				$("#checkmsg3").text("유효하지 않은 번호입니다.")
 				$("[name=newPhone]").val("")
 				$("[name=newPhone]").focus()
+			}else{
+				$('#phoneModal').modal("hide")
+				$("#newphoneFin").val(newPVal)
+				$("#phoneck").val("check")
 				
 			}
 		})
+		// 이메일 select 선택 !!! 이메일 안바뀜!!!!!! 이메일 값 변경하면 hidden값 변경되도록 설정하기
 		$("#emailsel").change(function(){
 			if($(this).val()==1){
 				$("#emailInput2").val("")
@@ -205,11 +234,85 @@ th{
 				$("#emailInput2").val($(this).val())
 			}
 		})
+		// 몸무게 유효성 체크
+		$("#weightInput").keyup(function(){
+			let weightVal = $("#weightInput").val()
+			let invalidWeight = /^[0-9]+$/
+			if(weightVal==""){
+				$("#newweightFin").val(65)
+				$("#cerWeight").text("")
+			}else{
+				if(!invalidWeight.test(weightVal)){
+					$("#cerWeight").text("숫자만 입력하세요.")
+				}else{
+					$("#cerWeight").text("")
+					$("#newweightFin").val(weightVal)
+				}
+			}
+		})
 		
+
+	
 		$(".nextbutton").click(function(){ // 수정 완료 버튼 누를 때
-			console.log($("#newpassFin").val())
-			console.log($("#newphoneFin").val())
+			if($("#emailInput").val()!="" && $("#emailInput2").val()!="" && $("#passck").val()=='check' && $("#phoneck").val()=='check'){
+				console.log("유효성체크 통과")
+				uptInfo('dnjswn123') // session에 있는 아이디 넣기
+			}else{
+				console.log("뭐가 문젤까")
+				console.log($("#emailInput").val())
+				console.log($("#emailInput2").val())
+				console.log($("#passck").val())
+				console.log($("#phoneck").val())
+			
+			}
+			
+		
 		})
 	});
+	function getInfo(id){
+		$.ajax({
+			url:"${path}/getId.do",
+			type:"get",
+			data:"id="+id,
+			dataType:"json",
+			success:function(data){
+				console.log(data)
+				var info = data.userInfo
+				$("#loginId").text(info.id)
+				$("#weightInput").val(info.weight)
+				$("#loginPhone").text(info.phoneNumber)
+				let emailarr = info.email.split('@')
+				$("#emailInput").val(emailarr[0])
+				$("#emailInput2").val(emailarr[1])
+				$("#loginPass").val(info.pass)
+				
+				// hiddenㅇ로 넘어갈 input의 초기값
+				$("#newpassFin").val(info.pass)
+				$("#newphoneFin").val(info.phoneNumber)
+				$("#neweamilFin").val(info.email)
+				$("#newweightFin").val(info.weight)
+				
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	}
+	
+	function uptInfo(id){
+		$.ajax({
+			url:"${path}/uptInfo.do",
+			type:"post",
+			data:$("#uptFrm").serialize(),
+			dataType:"json",
+			success:function(data){
+				alert("변경되었습니다.")
+				console.log(data)
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	}
 </script>
 </html>

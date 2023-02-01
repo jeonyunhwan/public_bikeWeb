@@ -30,5 +30,11 @@ public class UserService {
 	public int login(MemberVo login) {
 		return dao.login(login);
 	}
+	public MemberVo getId(String id) {
+		return dao.getId(id);
+	}
+	public void uptInfo(MemberVo upt) {
+		 dao.uptInfo(upt);
+	}
 	
 }

@@ -17,4 +17,10 @@
   	SELECT COUNT(*) FROM user1 WHERE id=#{id} AND pass=#{pass}
   </select>
 
+   <select id="getId" resultType="member" parameterType="string">
+   	 select * from user1 where id=#{id}
+   </select>
+   <update id="uptInfo" parameterType="member">
+   	update user1 set pass=#{pass}, phoneNumber=#{phoneNumber}, email=#{email}, weight=#{weight} where id=#{id}
+   </update>
   </mapper> 
