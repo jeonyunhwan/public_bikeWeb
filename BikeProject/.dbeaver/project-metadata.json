@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/Script-1.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"Scripts/Script-2.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/getCartTable.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/userTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"}}}
-=======
-{"resources":{"Scripts/Script.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"},"src/main/DB/getCartTable.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/guidline.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/oftenqna.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/userTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"}}}
->>>>>>> parent of 158c343 (스프링 환경설정)
+{"resources":{"Scripts/Script.sql":{"default-datasource":"oracle_thin-1860c1e9086-62f5bfaeed4b9a49","default-schema":"JYJ"},"script1.sql":{"default-datasource":"oracle_thin-1860c1e9086-62f5bfaeed4b9a49","default-schema":"JYJ"}}}
