@@ -2,6 +2,10 @@ SELECT * FROM user1;
 
 SELECT * FROM MEMBER;
 
+SELECT * FROM MEMBER;
+
+DROP TABLE MEMBER;
+
 CREATE TABLE MEMBER(
 	id varchar(50),
 	pass varchar(50),

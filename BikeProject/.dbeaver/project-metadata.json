@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/Script-1.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"},"Scripts/Script-2.sql":{"default-datasource":"oracle_thin-1860c41650c-17ca72c643551df5","default-schema":"JYJ"},"src/main/DB/getCartTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"},"src/main/DB/userTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"}}}
-=======
-<<<<<<< HEAD
-{"resources":{"Scripts/Script-1.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"Scripts/Script-2.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/getCartTable.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/userTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"}}}
-=======
-{"resources":{"Scripts/Script.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"},"src/main/DB/getCartTable.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/guidline.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/oftenqna.sql":{"default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba","default-schema":"SCOTT"},"src/main/DB/userTable.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-185ed3ef3b6-6fecaddb32c36ba"}}}
->>>>>>> parent of 158c343 (스프링 환경설정)
->>>>>>> branch 'master' of https://github.com/jeonyunhwan/public_bikeWeb.git
+{"resources":{"Scripts/Script-1.sql":{"default-datasource":"oracle_thin-1860c41650c-17ca72c643551df5","default-schema":"JYJ"},"Scripts/Script.sql":{"default-datasource":"oracle_thin-1860c41650c-17ca72c643551df5","default-schema":"JYJ"}}}
