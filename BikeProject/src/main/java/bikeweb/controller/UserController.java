@@ -48,4 +48,11 @@ public class UserController {
 		d.addAttribute("uptInfo",service.getId(upt.getId()));
 		return "pageJsonReport";
 	}
+	
+	@PostMapping("/delInfo.do") // 회원탈퇴
+	public String delInfo(@RequestParam("id") String id, Model d) {
+		service.delInfo(id);
+		d.addAttribute("delInfo",service.getId(id));
+		return "pageJsonReport";
+	}
 }

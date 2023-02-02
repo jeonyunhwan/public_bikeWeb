@@ -36,5 +36,7 @@ public class UserService {
 	public void uptInfo(MemberVo upt) {
 		 dao.uptInfo(upt);
 	}
-	
+	public void delInfo(String id) {
+		dao.delInfo(id);
+	}
 }

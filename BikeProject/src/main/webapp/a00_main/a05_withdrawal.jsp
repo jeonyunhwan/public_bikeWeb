@@ -15,6 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
@@ -87,12 +88,48 @@ span{
 		<option>기타</option>
 		<option>개인정보</option>
 	</select>
-	<button class="nextbutton" type="button" style="margin-top: 2%;">회원탈퇴</button>
+	<button class="nextbutton" id="delBtn" type="button" style="margin-top: 2%;">회원탈퇴</button>
 	</div>
 </body>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$("#delBtn").click(function(){
+		let id='dnjswn123' // session으로 지정된 아이디 넣기
+		let quitR = $("[name=quitReason]").val()
+		if(quitR=='0'){
+			swal("탈퇴 사유를 선택해주세요");
+		}else{
+			swal({
+				  title: "탈퇴하시겠습니까?",
+				  text: "확인 버튼을 누르면 탈퇴가 완료됩니다.",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					  $.ajax({
+							url:"${path}/delInfo.do",
+							type:"post",
+							data:"id="+id,
+							dataType:"json",
+							success:function(data){
+								let delInfo = data.delInfo
+								console.log(delInfo)
+								if(delInfo==null){
+									 swal("탈퇴가 완료되었습니다. 그동안 이용해주셔서 감사합니다", {
+									      icon: "success",
+									    });
+								}
+							},
+							error:function(err){
+								console.log(err)
+							}
+						}) 
+				  }
+				});
 			
-	});
+		
+		}
+	})
 </script>
 </html>

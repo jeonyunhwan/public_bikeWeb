@@ -23,4 +23,7 @@
    <update id="uptInfo" parameterType="member">
    	update user1 set pass=#{pass}, phoneNumber=#{phoneNumber}, email=#{email}, weight=#{weight} where id=#{id}
    </update>
+   <delete id="delInfo" parameterType="string">
+    delete from user1 where id=#{id}
+   </delete>
   </mapper> 

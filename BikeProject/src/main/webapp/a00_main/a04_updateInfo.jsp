@@ -223,7 +223,7 @@ th{
 				
 			}
 		})
-		// 이메일 select 선택 !!! 이메일 안바뀜!!!!!! 이메일 값 변경하면 hidden값 변경되도록 설정하기
+		// 이메일 select 선택 
 		$("#emailsel").change(function(){
 			if($(this).val()==1){
 				$("#emailInput2").val("")
@@ -254,6 +254,8 @@ th{
 
 	
 		$(".nextbutton").click(function(){ // 수정 완료 버튼 누를 때
+			let newEmail = $("#emailInput").val()+"@"+$("#emailInput2").val()
+			$("#neweamilFin").val(newEmail)
 			if($("#emailInput").val()!="" && $("#emailInput2").val()!="" && $("#passck").val()=='check' && $("#phoneck").val()=='check'){
 				console.log("유효성체크 통과")
 				uptInfo('dnjswn123') // session에 있는 아이디 넣기

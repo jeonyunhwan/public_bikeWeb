@@ -10,4 +10,5 @@ public interface UserDao {
 	
 	public MemberVo getId(String id);
 	public void uptInfo(MemberVo upt);
+	public void delInfo(String id);
 }
