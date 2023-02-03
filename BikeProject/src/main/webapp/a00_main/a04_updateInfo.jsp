@@ -57,6 +57,7 @@ th{
 	font-size: 0.5rem;
 }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
@@ -308,7 +309,7 @@ th{
 			data:$("#uptFrm").serialize(),
 			dataType:"json",
 			success:function(data){
-				alert("변경되었습니다.")
+				swal("변경되었습니다.")
 				console.log(data)
 			},
 			error:function(err){

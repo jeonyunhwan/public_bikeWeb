@@ -53,6 +53,7 @@
 	padding: 20px 40px 20px 40px;
 }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
@@ -78,7 +79,7 @@
 				alert("로그인 성공") // 세션 처리해서 화면 바꾸기
 				location.href="${path}/a00_main/a01_main.jsp"
 			}else{
-				alert("아이디와 비밀번호를 확인해주세요")
+				swal("아이디와 비밀번호를 확인해주세요");
 			}
 			
 		},
@@ -130,6 +131,6 @@
     </div>
     </div>
 </nav>
-
 </body>
+
 </html>

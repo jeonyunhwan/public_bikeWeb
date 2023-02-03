@@ -122,6 +122,7 @@ input[id="tab02"]:checked ~ .con2{
 	padding-left: 5px;
 }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
@@ -245,6 +246,7 @@ input[id="tab02"]:checked ~ .con2{
 </div>	
 </body>
 <script>
+	$("[name=tabmenu]").attr('disabled',true); // 초기에 라디오 버튼 비활성화처리
 	$("#allcheck").click(function(){
 		if($("#allcheck").prop("checked")){
 			$(".check").prop("checked",true);
@@ -255,8 +257,9 @@ input[id="tab02"]:checked ~ .con2{
 	$("#nextbutton").click(function(){
 		if($(".check").eq(0).prop("checked")&&$(".check").eq(1).prop("checked")&&$(".check").eq(2).prop("checked")){
 			$("#tab02").attr("checked",true);	
+			$("[name=tabmenu]").attr('disabled',false);
 		}else{
-			alert("필수 항목을 체크해주세요")
+			swal("필수 항목을 체크해주세요");
 		}
 	})
 	let ranNum = 0;
@@ -279,7 +282,7 @@ input[id="tab02"]:checked ~ .con2{
 		
 		$("#checkCertification").click(function(){
 			if($("#certificationInput").val()==ranNum){
-				alert("확인되었습니다.")
+				swal("확인되었습니다.")
 				$("#phoneck").val("check")
 			}else{
 				console.log("불일치")
@@ -294,7 +297,7 @@ input[id="tab02"]:checked ~ .con2{
 	// 아이디 유효성 체크
 	$("#idCkBtn").click(function(){
 		let idVal = $("#idInput").val()
-		let invalidId = /(?=.*\d)(?=.*[a-zA-Z]){6,12}/
+		let invalidId = /(?=.*\d)(?=.*[a-zA-Z]).{6,12}/
 		if( !invalidId.test(idVal) ){ 
 			$("#cerId").text("유효하지 않는 아이디입니다.")	
 			$("#idInput").focus()
@@ -389,7 +392,8 @@ input[id="tab02"]:checked ~ .con2{
 			$("[name=email]").val(email1+"@"+email2)
 			$("[name=auth]").val("일반회원")
 			$("#frm01").submit()
-			alert("환영합니다! 회원가입이 완료되었습니다")
+			swal("환영합니다","회원가입이 완료되었습니다","succeess");
+			
 			// ajax로 db에 넣기
 			
 		}else{
@@ -400,7 +404,7 @@ input[id="tab02"]:checked ~ .con2{
 			console.log(weightVal)
 			console.log(email1)
 			console.log(email2)
-			alert("빠트린 항목이 있는지 확인해주세요^^")
+			swal("빠트린 항목이 있는지 확인해주세요")
 		}
 	})
 	

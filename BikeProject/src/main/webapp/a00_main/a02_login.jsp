@@ -67,17 +67,29 @@
 	margin-top: 5%;
 }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
-<script src="${path}/a00_com/bootstrap.min.js"></script>
+<script src="${path}/a00_com/bootstrapt/vue.js"></script>
+<script src="https://developers.google.com/web/ilt.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dis/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+
 		$("#logBtn").click(function(){
 			login()
 		})
+		$("#logoImg").click(function(){
+			location.href="${path}/a00_main/a01_main.jsp"
+		})
+		$("#kakaoBtn").click(function(){
+			kakaoLogin()
+		})
+
+       window.Kakao.init('28827898e0bd0a6cd41080703c0513bf');
+
 	});
 	
 	function login(){
@@ -91,7 +103,8 @@
 			if(loginCk==1){
 				location.href="${path}/a00_main/a01_main.jsp"
 			}else{
-				alert("아이디와 비밀번호를 확인해주세요")
+				swal("아이디와 비밀번호를 확인해주세요");
+				
 			}
 			
 		},
@@ -100,14 +113,64 @@
 		}
 		})
 	}
+	 function kakaoLogin() {
+         window.Kakao.Auth.login({
+             scope: 'profile_nickname, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+             success: function(response) {
+                 console.log(response) // 로그인 성공하면 받아오는 데이터
+                 window.Kakao.API.request({ // 사용자 정보 가져오기 
+                     url: '/v2/user/me',
+                     success: (res) => {
+                         const kakao_account = res.kakao_account;
+                         console.log(kakao_account)
+                     }
+                 });
+                  window.location.href='/a00_main/a01_main.jsp' //리다이렉트 되는 코드
+             },
+             fail: function(error) {
+                 console.log(error);
+             }
+         });
+     }
+	 
+	 /*  // 안맞아!!!
+	 # 카카오톡 로그아웃
+	 window.Kakao.init('본인 JAVASCRIPT API 키');
+	function kakaoLogout() {
+    	if (!Kakao.Auth.getAccessToken()) {
+		    console.log('Not logged in.');
+		    return;
+	    }
+	    Kakao.Auth.logout(function(response) {
+    		alert(response +' logout');
+		    window.location.href='/'
+	    });
+	};
 	
+	#카카오톡 연결 끊기
+	function secession() {
+		Kakao.API.request({
+	    	url: '/v1/user/unlink',
+	    	success: function(response) {
+	    		console.log(response);
+	    		//callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+	    		window.location.href='/'
+	    	},
+	    	fail: function(error) {
+	    		console.log('탈퇴 미완료')
+	    		console.log(error);
+	    	},
+		});
+	};
+	*/
+
 </script>
 </head>
 
 <body>
 	
 	<div class="justify-content-center text-center" style="width: 23rem;">
-  	<img src="${path }/b01_img/logo.png" class="logo" alt="...">
+  	<img id="logoImg" src="${path }/b01_img/logo.png" class="logo" alt="...">
   	<br><br><br><br>
 	    <form id="frm">
 	    	<input class="form-control" name="id" type="text" placeholder="아이디" aria-label="default input example">
@@ -118,7 +181,7 @@
 			<a class="join" href="${path}/a00_main/a03_signup.jsp">회원가입</a>
 			<a class="find" href="#">아이디/비밀번호 찾기</a><br>
 			<span class="snslogin">sns 로그인</span><br>
-			<button type="button" class="kakao"><img class="kakaoImg" src="${path }/b01_img/kakao.png" width="30px"></button>
+			<button type="button" id="kakaoBtn" class="kakao"><img class="kakaoImg" src="${path }/b01_img/kakao.png" width="30px"></button>
 			<button type="button" class="naver"><img class="naverImg" src="${path }/b01_img/naver.png" width="30px"></button>
 			<button type="button" class="btn btn-secondary">비회원</button>
 				  
