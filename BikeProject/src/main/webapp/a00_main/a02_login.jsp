@@ -82,7 +82,8 @@
 			login()
 		})
 		$("#logoImg").click(function(){
-			location.href="${path}/a00_main/a01_main.jsp"
+			 secession()
+			//location.href="${path}/a00_main/a01_main.jsp"
 		})
 		$("#kakaoBtn").click(function(){
 			kakaoLogin()
@@ -101,7 +102,8 @@
 		success:function(data){
 			var loginCk = data.loginCk
 			if(loginCk==1){
-				location.href="${path}/a00_main/a01_main.jsp"
+				location.href="${path}/main.do" // 로그인 시 메인화면으로 이동
+				
 			}else{
 				swal("아이디와 비밀번호를 확인해주세요");
 				
@@ -113,6 +115,8 @@
 		}
 		})
 	}
+	
+	var kakaoNickname = ""
 	 function kakaoLogin() {
          window.Kakao.Auth.login({
              scope: 'profile_nickname, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
@@ -123,16 +127,48 @@
                      success: (res) => {
                          const kakao_account = res.kakao_account;
                          console.log(kakao_account)
+                         console.log(kakao_account.profile.nickname)
+                         kakaoNickname = kakao_account.profile.nickname
+                         console.log(kakao_account.email)
                      }
                  });
-                  window.location.href='/a00_main/a01_main.jsp' //리다이렉트 되는 코드
+                 // window.location.href='/a00_main/a01_main.jsp' //리다이렉트 되는 코드
+                 // db에 넣기 id -> kakao_account.email 의 앞자리 / name -> kakao_account.profile.nickname
              },
              fail: function(error) {
                  console.log(error);
              }
          });
      }
-	 
+	 function kakaoLogout() {
+	    	if (!Kakao.Auth.getAccessToken()) {
+			    console.log('Not logged in.');
+			    console.log(kakaoNickname)
+			    return;
+		    }
+		    Kakao.Auth.logout(function(response) {
+	    		alert(response +' logout');
+	    		 console.log(kakaoNickname)
+	    		//window.location.href='/'
+		    });
+		};
+		
+		function secession() {
+			Kakao.API.request({
+		    	url: '/v1/user/unlink',
+		    	success: function(response) {
+		    		console.log(response);
+		    		console.log(kakaoNickname)
+		    		//callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+		    		//window.location.href='/'
+		    	},
+		    	fail: function(error) {
+		    		console.log('탈퇴 미완료')
+		    		console.log(error);
+		    		console.log(kakaoNickname)
+		    	},
+			});
+		};
 	 /*  // 안맞아!!!
 	 # 카카오톡 로그아웃
 	 window.Kakao.init('본인 JAVASCRIPT API 키');
@@ -175,7 +211,7 @@
 	    <form id="frm">
 	    	<input class="form-control" name="id" type="text" placeholder="아이디" aria-label="default input example">
 	    	<input class="form-control" name="pass" type="password" placeholder="비밀번호" aria-label="default input example">
-	    	<input type="checkbox" value="" id="flexCheckDefault">
+	    	<input type="checkbox" name="rememberId" id="flexCheckDefault">
 			<label class="form-check-label" for="flexCheckDefault">로그인 상태 유지</label><br>
 			<button type="button" id="logBtn" class="btn btn-success">로그인</button><br>
 			<a class="join" href="${path}/a00_main/a03_signup.jsp">회원가입</a>

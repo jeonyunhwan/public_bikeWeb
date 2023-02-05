@@ -54,6 +54,18 @@ hr{
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var loginId ='${loginId}'
+		
+		if(loginId!=''){
+			$(".loginheader").css("display","inline-block");
+			$(".noneheader").css("display","none");
+			console.log(loginId)
+		}else{
+			$(".noneheader").css("display","inline-block");
+			$(".loginheader").css("display","none");
+			console.log(loginId)
+		}
+		
 		
 	});
 </script>
@@ -65,8 +77,8 @@ hr{
 
 <div id="header" class="row">
  <div class="col-8"></div>
- <div class="col-4"><a class="headertext noneheader" href="#">로그인</a> <a class="headertext noneheader" href="#">회원가입</a>
- 	<a class="headertext loginheader" href="#">마이페이지</a><a class="headertext loginheader" href="#">로그아웃</a><a class="headertext" href="#">알림</a>
+ <div class="col-4"><a class="headertext noneheader" href="${path}/a00_main/a02_login.jsp">로그인</a> <a class="headertext noneheader" href="${path}/a00_main/a03_signup.jsp">회원가입</a>
+ 	<a class="headertext loginheader" href="#">마이페이지</a><a class="headertext loginheader" id="logout" href="${path}/logout.do">로그아웃</a><a class="headertext" href="#">알림</a>
  </div>
 </div>
 

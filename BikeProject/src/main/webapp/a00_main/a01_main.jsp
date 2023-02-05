@@ -60,11 +60,16 @@
 <script src="${path}/a00_com/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
-<script type="text/javascript">
+<script type="text/javascript" >
 	$(document).ready(function(){
 		$("#logBtn").click(function(){
 			login()
 		})
+		
+		var loginId = "${loginId}"
+		if(loginId!=''){
+			$('.smlogin').css('display','none');
+		}
 	});
 	function login(){
 		
@@ -76,8 +81,7 @@
 		success:function(data){
 			var loginCk = data.loginCk
 			if(loginCk==1){
-				alert("로그인 성공") // 세션 처리해서 화면 바꾸기
-				location.href="${path}/a00_main/a01_main.jsp"
+				location.href="${path}/main.do"
 			}else{
 				swal("아이디와 비밀번호를 확인해주세요");
 			}
@@ -95,6 +99,7 @@
 <div class="container">
 	<jsp:include page="${path }/a00_main/a00_header.jsp"></jsp:include>
 </div>	
+
 	<div class="text-center smlogin" style="width: 250px;height: 225px;padding: 20px 20px 20px 20px;">
 		<form id="frm" class="form-floating">
 		  <input type="text" class="form-control" id="floatingInputValue" placeholder="아이디" name="id">

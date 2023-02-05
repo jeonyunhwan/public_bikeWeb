@@ -68,6 +68,9 @@ th{
 </head>
 
 <body>
+<div class="container">
+	<jsp:include page="${path }/a00_main/a00_header.jsp"></jsp:include>
+	<jsp:include page="${path }/a00_main/a10_myPageMemberSub.jsp"></jsp:include>
 	
 	<form id="uptFrm" >
 	<table class="table table-bordered">
@@ -144,7 +147,7 @@ th{
 		    </div>
 		  </div>
 		</div>
-
+</div>
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){

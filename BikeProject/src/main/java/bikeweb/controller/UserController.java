@@ -1,5 +1,7 @@
 package bikeweb.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,12 @@ import bikeweb.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService service;
+	@GetMapping("/main.do")
+	public String goMain(Model d, HttpSession session) {
+		d.addAttribute("loginId",session.getAttribute("id"));
+		System.out.println(session.getAttribute("id"));
+		return "a00_main\\a01_main.jsp";
+	}
 	
 	@RequestMapping("/signup.do") //회원가입
 	public String signin(MemberVo ins) {
@@ -31,8 +39,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/login.do") // 로그인
-	public String login(MemberVo login, Model d) {
+	public String login(MemberVo login, Model d, HttpSession session) {
+		session.setAttribute("id", login.getId());
+		System.out.println(session.getAttribute("id"));
 		d.addAttribute("loginCk",service.login(login));
+		
 		return "pageJsonReport";
 	}
 	
@@ -54,5 +65,10 @@ public class UserController {
 		service.delInfo(id);
 		d.addAttribute("delInfo",service.getId(id));
 		return "pageJsonReport";
+	}
+	@GetMapping("/logout.do")// 로그아웃
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "a00_main\\a01_main.jsp";
 	}
 }
