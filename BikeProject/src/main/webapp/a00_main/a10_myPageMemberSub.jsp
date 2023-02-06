@@ -15,11 +15,15 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<%-- 
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
-<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >--%>
 <style>
-#idposition{
+	#mypageCommonHr{
 		margin-top:1%;
+	}
+	#idposition{
+		margin-top:2%;
 		margin-left:2%;
 	}
 	#greyBox{
@@ -28,9 +32,8 @@
 		width:100%;
 		height:70px;
 		margin-top:1%;
-		position:fixed;
+		position:absolute;
 		left:0%;
-		
 	}
 	#greyBox .MypageMenu{
 		margin-top:0%;
@@ -55,6 +58,7 @@
 	}
 	.Mypagehr{
 		border:solid 3px green;
+		width:90%;
 	}
 	#payManagerCommonTab{
 		backgroung:white;
@@ -82,6 +86,9 @@
 <script src="${path}/a00_com/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		var loginId = '${loginId}'
+		$("#idposition").text(loginId+"님")
 		
 		var hrPosition01 = document.querySelector("#hrposition01")
 		var hrPosition02 = document.querySelector("#hrposition02")
@@ -117,8 +124,12 @@
 		
 		$("#payManagerCommonTab td").click(function(){
 			$("#payManagerCommonTab td").css({"background":"","color":""})
-			$(this).css({"background":"#001b31","color":"white"})
+			$(this).css({"background":"#001b31","color":"white"})	
 		})
+		
+		$("#iconID01").attr("src", "${path}/b01_img/userInfoManagerIcon(click).png");
+		document.querySelector("#hrposition01").innerHTML = "<hr class='Mypagehr'>"
+		$("#userInfoBox").css({"background":"white","color":"green"})
 	});
 </script>
 </head>
@@ -145,9 +156,9 @@
 	
 	<table id="payManagerCommonTab">
 		<tr>
-			<td id="payhistory" onclick="location.href='${path}/a41_PayManager/payHistory.jsp'">개인정보 수정</td>
-			<td id="addPay" onclick="location.href='${path}/a41_PayManager/user_UnpaidChargePay.jsp'">회원 탈퇴</td>
-			<td id="getPayMethod" onclick="location.href='${path}/a41_PayManager/getPayMethod.jsp'">부릉이 이용랭킹</td>
+			<td id="payhistory" onclick="location.href='${path}/myPage.do'">개인정보 수정</td>
+			<td id="addPay" onclick="location.href='${path}/withdrawal.do'">회원 탈퇴</td>
+			<td id="getPayMethod" onclick="location.href='${path}/a00_main/a06_rank.jsp'">부릉이 이용랭킹</td>
 			
 		</tr>
 	</table>

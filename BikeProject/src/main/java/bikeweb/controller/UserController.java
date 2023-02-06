@@ -38,11 +38,13 @@ public class UserController {
 		return "pageJsonReport";
 	}
 	
-	@PostMapping("/login.do") // 로그인
+	@PostMapping("/login.do") // 로그인  해당 아이디의 권한정보 가져오기
 	public String login(MemberVo login, Model d, HttpSession session) {
 		session.setAttribute("id", login.getId());
 		System.out.println(session.getAttribute("id"));
 		d.addAttribute("loginCk",service.login(login));
+		d.addAttribute("auth",service.getAuth(login.getId()));
+		System.out.println(service.getAuth(login.getId()));
 		
 		return "pageJsonReport";
 	}
@@ -70,5 +72,15 @@ public class UserController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "a00_main\\a01_main.jsp";
+	}
+	@GetMapping("/myPage.do")// 마이페이지 초기화면(회원정보 수정)
+	public String goUadateInfo(Model d, HttpSession session) {
+		d.addAttribute("loginId",session.getAttribute("id"));
+		return "a00_main\\a04_updateInfo.jsp";
+	}
+	@GetMapping("/withdrawal.do")// 회원탈퇴 화면
+	public String goWirhdrawal(Model d, HttpSession session) {
+		d.addAttribute("loginId",session.getAttribute("id"));
+		return "a00_main\\a05_withdrawal.jsp";
 	}
 }

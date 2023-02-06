@@ -74,6 +74,10 @@ span{
 </head>
 
 <body>
+<div class="container">
+	<jsp:include page="${path }/a00_main/a00_header.jsp"></jsp:include>
+	<jsp:include page="${path }/a00_main/a10_myPageMemberSub.jsp"></jsp:include>
+	
 	<div class="quitDiv">
 	<h2><span>회원탈퇴</span>를 신청합니다.</h2><br><br>
 	<h5>그동안 이용해 주셔서 감사합니다.<br>탈퇴하실 경우 아래와 같이 회원정보가 처리됩니다.</h5><br><br>
@@ -90,10 +94,13 @@ span{
 	</select>
 	<button class="nextbutton" id="delBtn" type="button" style="margin-top: 2%;">회원탈퇴</button>
 	</div>
+</div>	
 </body>
 <script type="text/javascript">
+
+	var loginId = '${loginId}'
 	$("#delBtn").click(function(){
-		let id='dnjswn123' // session으로 지정된 아이디 넣기
+		let id=loginId // session으로 지정된 아이디 넣기
 		let quitR = $("[name=quitReason]").val()
 		if(quitR=='0'){
 			swal("탈퇴 사유를 선택해주세요");
@@ -120,6 +127,7 @@ span{
 									      icon: "success",
 									    });
 								}
+								location.href="${path}/logout.do" // 세션종료되게 로그아웃으로 이동시킴
 							},
 							error:function(err){
 								console.log(err)

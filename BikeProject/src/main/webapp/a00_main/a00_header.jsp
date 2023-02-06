@@ -3,7 +3,17 @@
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path" value="${pageContext.request.contextPath }"/>    
+<c:set var="path" value="${pageContext.request.contextPath }"/> 
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="${path}/a00_com/jquery.min.js"></script>
+<script src="${path}/a00_com/jquery-ui.js"></script>
+<script src="${path}/a00_com/popper.min.js"></script>
+<script src="${path}/a00_com/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>   
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
@@ -46,12 +56,7 @@ hr{
 	display: none;
 }
 </style>
-<script src="${path}/a00_com/jquery.min.js"></script>
-<script src="${path}/a00_com/popper.min.js"></script>
-<script src="${path}/a00_com/bootstrap.min.js"></script>
-<script src="${path}/a00_com/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		var loginId ='${loginId}'
@@ -78,14 +83,14 @@ hr{
 <div id="header" class="row">
  <div class="col-8"></div>
  <div class="col-4"><a class="headertext noneheader" href="${path}/a00_main/a02_login.jsp">로그인</a> <a class="headertext noneheader" href="${path}/a00_main/a03_signup.jsp">회원가입</a>
- 	<a class="headertext loginheader" href="#">마이페이지</a><a class="headertext loginheader" id="logout" href="${path}/logout.do">로그아웃</a><a class="headertext" href="#">알림</a>
+ 	<a class="headertext loginheader" href="${path}/myPage.do">마이페이지</a><a class="headertext loginheader" id="logout" href="${path}/logout.do">로그아웃</a><a class="headertext" href="#">알림</a>
  </div>
 </div>
 
 <hr>
 <nav id="navbar" class="navbar navbar-expand-sm">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="${path }/b01_img/logo.png" width="50%"/></a>
+    <a class="navbar-brand" href="${path }/main.do"><img src="${path }/b01_img/logo.png" width="50%"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>

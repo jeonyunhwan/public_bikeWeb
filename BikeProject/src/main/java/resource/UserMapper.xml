@@ -26,4 +26,7 @@
    <delete id="delInfo" parameterType="string">
     delete from user1 where id=#{id}
    </delete>
+   <select id="getAuth" resultType="string" parameterType="string">
+   	select auth from user1 where id=#{id}
+   </select>
   </mapper> 

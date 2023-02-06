@@ -14,8 +14,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
+
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" > 
 <style>
 .nextbutton{
 	width:28%;
@@ -57,14 +58,16 @@ th{
 	font-size: 0.5rem;
 }
 </style>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script src="${path}/a00_com/jquery.min.js"></script>
-<script src="${path}/a00_com/popper.min.js"></script>
-<script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
+<script src="${path}/a00_com/popper.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -123,7 +126,7 @@ th{
 		        </form>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 		         <button type="button" id="passCheck2" class="btn btn-primary">저장</button>
 		      </div>
 		    </div>
@@ -141,7 +144,7 @@ th{
 		        변경할 전화번호 입력 : <input type="text" name="newPhone"><br><span id="checkmsg3"></span>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 		         <button type="button" id="phoneCheck" class="btn btn-primary">저장</button>
 		      </div>
 		    </div>
@@ -151,11 +154,14 @@ th{
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#formId").val('dnjswn123')
-		getInfo('dnjswn123') // 임의로 아이디의 정보 가져오기 (나중에 session으로 설정해놓은 아이디 가져와서 넣기)
+		var loginId = '${loginId}'
+		
+		
+		$("#formId").val(loginId)
+		getInfo(loginId) // 임의로 아이디의 정보 가져오기 (나중에 session으로 설정해놓은 아이디 가져와서 넣기)
 		
 		$("#passBtn").click(function(){
-			$('#passModal').modal("show")
+			$('#passModal').modal("show")  // 부트스트랩이랑 jquery 충돌나서 모달창 작동 안함 ㅜㅜ...
 			$("#originPass").val("")
 			$("[name=newpass1]").val("")
 			$("[name=newpass2]").val("")

@@ -39,4 +39,7 @@ public class UserService {
 	public void delInfo(String id) {
 		dao.delInfo(id);
 	}
+	public String getAuth(String id) {
+		return dao.getAuth(id);
+	};
 }

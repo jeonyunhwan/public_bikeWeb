@@ -80,8 +80,11 @@
 		dataType:"json",
 		success:function(data){
 			var loginCk = data.loginCk
-			if(loginCk==1){
-				location.href="${path}/main.do"
+			var auth = data.auth
+			if(loginCk==1 && auth=='일반회원'){
+				location.href="${path}/main.do" // 로그인 시 메인화면으로 이동
+			}else if(loginCk==1 && auth=='관리자'){
+				location.href="${path}/" //관리자 메인 화면으로 이동시키기
 			}else{
 				swal("아이디와 비밀번호를 확인해주세요");
 			}
