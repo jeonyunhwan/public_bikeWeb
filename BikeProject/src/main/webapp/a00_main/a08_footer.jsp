@@ -67,6 +67,12 @@
       
       #footer {
       	background-color: #ededed;
+      	max-width: 100%;
+      }
+      
+      .py-5 {
+      	max-width: 1140px;
+      	margin: auto;
       }
       
       #footer_info h6 {

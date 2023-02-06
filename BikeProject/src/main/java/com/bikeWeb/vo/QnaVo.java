@@ -7,7 +7,7 @@ public class QnaVo {
 	private Date writedate;
 	private String id;
 	private String title;
-	private String Content;
+	private String content;
 	private String imgfile;
 	// 관리자아이디 
 	private String mgrid;
@@ -47,10 +47,10 @@ public class QnaVo {
 		this.title = title;
 	}
 	public String getContent() {
-		return Content;
+		return content;
 	}
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
 	public String getImgfile() {
 		return imgfile;
