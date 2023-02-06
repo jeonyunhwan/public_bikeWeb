@@ -27,3 +27,22 @@ ADD CONSTRAINT fk_user1
 FOREIGN KEY (getcardno)
 REFERENCES getcard(getcardno) on delete cascade;
 SELECT * FROM ALL_CONSTRAINTS WHERE TABLE_NAME ='user1';
+
+
+
+
+--렌탈 정보 등록
+INSERT INTO rentalInfo values(rental_seq.nextval,'회원','','','bike21','test222','홍대입구역 8번출구 앞 (신)',TO_date('2023-02-01','yyyy-mm-dd'),'홍대입구역 8번출구 앞 (신)',TO_date('2023-02-01','yyyy-mm-dd'),500,'','');
+
+INSERT INTO bike values('bike'||bike_seq.nextval,sysdate,1,'배치중','홍대입구역 8번출구 앞 (신)');
+INSERT INTO bike values('bike'||bike_seq.nextval,sysdate,12,'배치중','홍대입구역 8번출구 앞 (신)');
+INSERT INTO bike values('bike'||bike_seq.nextval,sysdate,9,'대여중','홍대입구역 8번출구 앞 (신)');
+
+
+INSERT INTO rentaloffice values('홍대입구역 8번출구 앞 (신)','서울 마포구 동교동','홍대입구역 8번출구','02-000-0000',30);
+
+SELECT id, sum(usedistance) AS sui from rentalInfo where to_char(returnTime,'ww')=to_char(sysdate,'ww') group by id ORDER BY sui DESC;
+SELECT id, sum(usedistance) AS sui from rentalInfo where to_char(returnTime,'mm')=to_char(sysdate,'mm') group by id ORDER BY sui DESC;
+SELECT sum(usedistance) from rentalInfo where to_char(returnTime,'ww')=to_char(sysdate,'ww') AND id='dnjswn123';
+SELECT TO_char(returntime,'ww')  FROM rentalInfo
+;

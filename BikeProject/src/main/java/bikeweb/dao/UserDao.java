@@ -12,4 +12,5 @@ public interface UserDao {
 	public void uptInfo(MemberVo upt);
 	public void delInfo(String id);
 	public String getAuth(String id);
+	
 }

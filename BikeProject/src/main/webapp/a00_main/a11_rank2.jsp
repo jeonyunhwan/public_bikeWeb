@@ -74,8 +74,9 @@ h3{
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		load()
-		
+		$("#weekBtn").click(function(){
+			location.href="${path}/rank.do"
+		})
 		$("#monthBtn").click(function(){
 			location.href="${path}/rankM.do"
 		})
@@ -83,11 +84,6 @@ h3{
 		$("#payManagerCommonTab td").eq(2).css({"background":"#001b31","color":"white"})
 		
 	});
-	function load(){
-		$("#weekBtn").click(function(){
-			location.href="${path}/rank.do"
-		})
-	}
 </script>
 </head>
 
@@ -100,6 +96,7 @@ request.setAttribute("loginId", loginId);
 
 <jsp:include page="${path }/a00_main/a00_header.jsp"></jsp:include>
 <jsp:include page="${path }/a00_main/a10_myPageMemberSub.jsp"></jsp:include>
+	
 <button id="weekBtn" type="button"><h3>주간</h3></button>&nbsp;&nbsp; <button id="monthBtn" type="button"><h3>월간</h3></button>
 
 <p class="ranktxt">전주 월요일~일요일까지의 이용거리 실적<br>
@@ -108,11 +105,11 @@ request.setAttribute("loginId", loginId);
 <p>나의 랭킹</p>
 <hr>
 <div class="myinfo">
-<c:forEach var="w" items="${weekRank }" varStatus="status">
-<c:if test="${w.id== loginId }">
+<c:forEach var="m" items="${monthRank }" varStatus="status">
+<c:if test="${m.id== loginId }">
 <h3 id="num">${status.count }등</h3>
-<h3 id="id">${w.id }</h3>
-<h3 id="distance">${w.useDistance }km</h3>
+<h3 id="id">${m.id }</h3>
+<h3 id="distance">${m.useDistance }km</h3>
 </c:if>
 </c:forEach>
 </div>
@@ -124,8 +121,8 @@ request.setAttribute("loginId", loginId);
 <tr><th>등수</th><th>아이디</th><th>이동거리</th></tr></thead>
 <!-- ajax로 불러올 부분 -->
 <tbody>
-<c:forEach var="w" items="${weekRank}" varStatus="status">
-<tr><td id="tabnum">${status.count }</td><td id="tabid">${w.id }</td><td id="tabdistance">${w.useDistance }km</td></tr>
+<c:forEach var="m" items="${monthRank}" varStatus="status">
+<tr><td id="tabnum">${status.count }</td><td id="tabid">${m.id }</td><td id="tabdistance">${m.useDistance }km</td></tr>
 </c:forEach>
 </tbody>
 </table>

@@ -150,6 +150,8 @@ th{
 		    </div>
 		  </div>
 		</div>
+		
+		<jsp:include page="${path }/a00_main/08_footer.jsp"></jsp:include>
 </div>
 </body>
 <script type="text/javascript">
@@ -326,5 +328,8 @@ th{
 			}
 		})
 	}
+	
+	$("#payManagerCommonTab td").eq(0).css({"background":"#001b31","color":"white"})
+	
 </script>
 </html>

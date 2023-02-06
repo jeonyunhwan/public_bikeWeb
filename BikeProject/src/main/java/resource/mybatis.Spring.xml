@@ -5,11 +5,13 @@
 
 	<typeAliases>
 		<typeAlias type="com.bikeWeb.vo.MemberVo" alias="member"/>				
+		<typeAlias type="com.bikeWeb.vo.RentalVo" alias="rent"/>				
 	</typeAliases>
 
 	<mappers>
 	
 		<mapper resource="resource/UserMapper.xml"/> 
+		<mapper resource="resource/RentalMapper.xml"/> 
 	
 	</mappers>	
 </configuration>

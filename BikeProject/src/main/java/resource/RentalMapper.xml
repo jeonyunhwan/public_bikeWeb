@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+ 
+
+  <mapper namespace="bikeweb.dao.RentalDao">
+   <resultMap type="rent" id="weekRst">
+   	<result column="sui" property="useDistance"/>
+   </resultMap>
+   <select id="weekRank" resultMap="weekRst">
+   select id, sum(usedistance) as sui from rentalInfo where to_char(returnTime,'ww')=to_char(sysdate,'ww') group by id ORDER BY sui DESC
+   </select>
+   <resultMap type="rent" id="monthRst">
+   	<result column="sui" property="useDistance"/>
+   </resultMap>
+    <select id="monthRank" resultMap="monthRst">
+   select id, sum(usedistance) as sui from rentalInfo where to_char(returnTime,'mm')=to_char(sysdate,'mm') group by id ORDER BY sui DESC
+   </select>
+  </mapper> 

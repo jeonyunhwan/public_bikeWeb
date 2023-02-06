@@ -97,7 +97,7 @@ span{
 </div>	
 </body>
 <script type="text/javascript">
-
+	$("#payManagerCommonTab td").eq(1).css({"background":"#001b31","color":"white"})
 	var loginId = '${loginId}'
 	$("#delBtn").click(function(){
 		let id=loginId // session으로 지정된 아이디 넣기
