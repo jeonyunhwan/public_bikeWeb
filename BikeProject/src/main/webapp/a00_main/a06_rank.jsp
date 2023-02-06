@@ -74,16 +74,22 @@ h3{
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$("#weekBtn").click()
 		$("#weekBtn").click(function(){
 			location.href="${path}/rank.do"
 		})
-		
 		$("#monthBtn").click(function(){
 			location.href="${path}/rankM.do"
 		})
-		
 		$("#payManagerCommonTab td").eq(2).css({"background":"#001b31","color":"white"})
+		
+		if(loginId!=''){
+			$("#weekBtn").trigger('click')
+			return
+		}
+		
+		
+		
+	
 		
 	});
 	
@@ -131,5 +137,7 @@ request.setAttribute("loginId", loginId);
 </tbody>
 </table>
 </div>
+<br><br><br><br>
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>	
 </body>
 </html>

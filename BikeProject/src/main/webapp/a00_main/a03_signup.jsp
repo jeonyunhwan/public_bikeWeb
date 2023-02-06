@@ -243,7 +243,9 @@ input[id="tab02"]:checked ~ .con2{
 		  </div>
 		</div>
 		
-</div>	
+</div>
+<br><br><br><br>
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>	
 </body>
 <script>
 	$("[name=tabmenu]").attr('disabled',true); // 초기에 라디오 버튼 비활성화처리

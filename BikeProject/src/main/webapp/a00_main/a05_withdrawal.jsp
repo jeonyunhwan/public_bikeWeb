@@ -94,7 +94,10 @@ span{
 	</select>
 	<button class="nextbutton" id="delBtn" type="button" style="margin-top: 2%;">회원탈퇴</button>
 	</div>
-</div>	
+	
+</div>
+<br><br><br><br><br><br><br><br>
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>		
 </body>
 <script type="text/javascript">
 	$("#payManagerCommonTab td").eq(1).css({"background":"#001b31","color":"white"})

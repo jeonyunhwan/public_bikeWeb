@@ -150,9 +150,10 @@ th{
 		    </div>
 		  </div>
 		</div>
+		<br><br><br><br>
 		
-		<jsp:include page="${path }/a00_main/08_footer.jsp"></jsp:include>
 </div>
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){

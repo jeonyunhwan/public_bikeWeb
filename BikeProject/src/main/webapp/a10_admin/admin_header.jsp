@@ -47,7 +47,11 @@ hr{
 .badge{
 	font-size: 0.4rem !important;
 }
+.dropdown-item{
+	font-size: 0.8rem !important;
+}
 </style>
+<script src="/static/js/bootstrap.bundle.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
@@ -55,8 +59,8 @@ hr{
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		
+	$(document).ready(function(){// 안닫힘;;;;;;;;;;
+		$('.dropdown-toggle').dropdown()
 	});
 </script>
 <html>
@@ -83,20 +87,35 @@ hr{
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">공지사항</a>
+        <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">공지사항</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">공지사항 조회</a></li>
+            <li><a class="dropdown-item" href="#">공지사항 등록</a></li>
+            </ul>
         </li>
-         <li class="nav-item">
-            <a class="nav-link" href="#">안전수칙</a>
+        
+         <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">안전수칙</a>
+             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+             <li><a class="dropdown-item" href="#">안전수칙 조회</a></li>
+             <li><a class="dropdown-item" href="#">안전수칙 등록</a></li>
+             </ul>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">자주하는질문</a>
+        
+        <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">자주하는질문</a>
+       		 <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+             <li><a class="dropdown-item" href="#">자주하는질문 조회</a></li>
+             <li><a class="dropdown-item" href="#">자주하는질문 등록</a></li>
+            </ul>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">1:1문의<span class="badge position-absolute top-23 start-85 translate-middle rounded-circle bg-danger">4</span></a>
+        <li class="nav-item dropdown">
+             <a class="nav-link" href="#">
+             1:1문의<span class="badge position-absolute top-23 start-85 translate-middle rounded-circle bg-danger">4</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">회원정보</a>
+        <li class="nav-item ">
+             <a class="nav-link " href="#">회원정보</a>
         </li>
         </ul>
     </div>

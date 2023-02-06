@@ -127,5 +127,7 @@ request.setAttribute("loginId", loginId);
 </tbody>
 </table>
 </div>
+<br><br><br><br>
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>	
 </body>
 </html>

@@ -12,6 +12,7 @@
 	
 		<mapper resource="resource/UserMapper.xml"/> 
 		<mapper resource="resource/RentalMapper.xml"/> 
+		<mapper resource="resource/AdminMapper.xml"/> 
 	
 	</mappers>	
 </configuration>

@@ -17,6 +17,7 @@ SELECT * FROM USER1;
 
 INSERT INTO user1 values('dnjswn1','dnjswn123!','','일반회원','홍설','0102353776','dnjswn@gmail.com',65,'','');
 INSERT INTO user1 values('dnjswn123','dnjswn123!','','일반회원','홍길동','01023321476','d25swn@naver.com',88,'','');
+INSERT INTO user1 values('admin1','admin1!','','관리자','김관리','01066667777','rhkfsl@naver.com',65,'','');
 
 SELECT COUNT(*) FROM user1 WHERE id='dnjsw'; 
 delete from user1 where id='dnjswn1';

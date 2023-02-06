@@ -140,5 +140,5 @@
     </div>
 </nav>
 </body>
-
+<jsp:include page="${path }/a00_main/a08_footer.jsp"></jsp:include>
 </html>
