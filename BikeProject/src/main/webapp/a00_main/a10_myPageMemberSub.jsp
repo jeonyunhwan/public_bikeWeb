@@ -159,6 +159,7 @@
 			<td id="payhistory" onclick="location.href='${path}/myPage.do'">개인정보 수정</td>
 			<td id="addPay" onclick="location.href='${path}/withdrawal.do'">회원 탈퇴</td>
 			<td id="getPayMethod" onclick="location.href='${path}/a00_main/a06_rank.jsp'">부릉이 이용랭킹</td>
+			<td id="qnaHistory" onclick="location.href='${path}/a32_qnaFaq/qnaHistory.jsp'">상담내역</td>
 			
 		</tr>
 	</table>
