@@ -74,7 +74,10 @@ h3{
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		load()
+		$("#weekBtn").click()
+		$("#weekBtn").click(function(){
+			location.href="${path}/rank.do"
+		})
 		
 		$("#monthBtn").click(function(){
 			location.href="${path}/rankM.do"
@@ -83,11 +86,9 @@ h3{
 		$("#payManagerCommonTab td").eq(2).css({"background":"#001b31","color":"white"})
 		
 	});
-	function load(){
-		$("#weekBtn").click(function(){
-			location.href="${path}/rank.do"
-		})
-	}
+	
+		
+	
 </script>
 </head>
 
