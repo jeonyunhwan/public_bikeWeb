@@ -8,7 +8,7 @@ public class NoticeVo {
 	private Date writedate;
 	private String title;
 	private String content;
-	private String file;
+	private String imgfile;
 	/**
 	 * 
 	 */
@@ -45,11 +45,12 @@ public class NoticeVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getFile() {
-		return file;
+	public String getImgfile() {
+		return imgfile;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setImgfile(String imgfile) {
+		this.imgfile = imgfile;
 	}
 	
 }
+
