@@ -112,7 +112,7 @@ hr{
             <a class="nav-link" href="${path}/noticeList.do">공지사항</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">안전수칙</a>
+            <a class="nav-link" href="${path}/a31_notice/guideline.jsp">안전수칙</a>
         </li>
         </ul>
     </div>

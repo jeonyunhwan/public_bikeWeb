@@ -78,9 +78,10 @@
 </head>
 
 <body>	
-	<jsp:include page="/a00_main/a00_header.jsp"/>
 
 	<div class="container">
+		<jsp:include page="/a00_main/a00_header.jsp"/>
+	
 		<div id="title" class="text-left">
 		  <h2>공지사항</h2>
 		</div>

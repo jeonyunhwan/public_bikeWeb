@@ -1,9 +1,6 @@
 CREATE TABLE guideline(
 	guideno varchar(20) PRIMARY KEY,
-	thmemdiv varchar(20),
-	photopath varchar(500),
-	title varchar(500),
-	content varchar(4000)
+	imgfile varchar(500)
 );
 DROP TABLE guideline;
 
@@ -16,4 +13,10 @@ CREATE SEQUENCE guide_seq
 		MAXVALUE 100000;
 DROP SEQUENCE guide_seq;
 
-INSERT INTO guideline values('g'||guide_seq.nextval,'','','','');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide01');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide02');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide03');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide04');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide05');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide06');
+INSERT INTO guideline values('g'||guide_seq.nextval,'guide07');
