@@ -15,16 +15,19 @@
 		<typeAlias type="com.bikeWeb.vo.PayRentalTotVo" alias="payrentaltot"/>	
 		<typeAlias type="com.bikeWeb.vo.NoticeVo" alias="notice"/>	
 		<typeAlias type="com.bikeWeb.vo.QnaVo" alias="qna"/>		
-		<typeAlias type="com.bikeWeb.vo.GuideLineVo" alias="guideLine"/>				
+		<typeAlias type="com.bikeWeb.vo.GuideLineVo" alias="guideLine"/>	
+	    <typeAlias type="com.bikeWeb.vo.AlertVo" alias="alert"/>
+	    <typeAlias type="com.bikeWeb.vo.PagingVo" alias="paging"/>
+	    <typeAlias type="com.bikeWeb.vo.CouponVo" alias="coupon"/>
 	</typeAliases>
-
-	<mappers>
 	
+	<mappers>
 		<mapper resource="resource/UserMapper.xml"/> 
 		<mapper resource="resource/RentalMapper.xml"/> 
 		<mapper resource="resource/AdminMapper.xml"/> 
 		<mapper resource="resource/payMapper.xml"/> 
 		<mapper resource="resource/NoticeMapper.xml"/> 
 		<mapper resource="resource/QnaMapper.xml"/> 
-	</mappers>	
+	    <mapper resource="resource/MyPageMapper.xml"/>	
+	</mappers>
 </configuration>
