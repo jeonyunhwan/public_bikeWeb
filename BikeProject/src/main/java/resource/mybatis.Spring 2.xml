@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.bikeWeb.vo.MemberVo" alias="member"/>				
+		<typeAlias type="com.bikeWeb.vo.RentalVo" alias="rent"/>
+		<typeAlias type="com.bikeWeb.vo.RentalVo" alias="rental"/>
+		<typeAlias type="com.bikeWeb.vo.BikeInfoVo" alias="bikeinfo"/>
+		<typeAlias type="com.bikeWeb.vo.GetPayVo" alias="getpay"/>
+		<typeAlias type="com.bikeWeb.vo.PayVo" alias="pay"/>
+		<typeAlias type="com.bikeWeb.vo.RentalOfficeVo" alias="rentaloffice"/>
+		<typeAlias type="com.bikeWeb.vo.PayDaySeachVo" alias="paydayseach"/>
+		<typeAlias type="com.bikeWeb.vo.PayRentalTotVo" alias="payrentaltot"/>	
+		<typeAlias type="com.bikeWeb.vo.NoticeVo" alias="notice"/>	
+		<typeAlias type="com.bikeWeb.vo.QnaVo" alias="qna"/>		
+		<typeAlias type="com.bikeWeb.vo.GuideLineVo" alias="guideLine"/>				
+	</typeAliases>
+
+	<mappers>
+	
+		<mapper resource="resource/UserMapper.xml"/> 
+		<mapper resource="resource/RentalMapper.xml"/> 
+		<mapper resource="resource/AdminMapper.xml"/> 
+		<mapper resource="resource/payMapper.xml"/> 
+		<mapper resource="resource/NoticeMapper.xml"/> 
+		<mapper resource="resource/QnaMapper.xml"/> 
+	</mappers>	
+</configuration>

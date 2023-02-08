@@ -14,10 +14,13 @@ public class RentalVo {
 	private Date rentalTime;
 	// 반납 지역 
 	private String EndPlaceName;
-	private Date returnDate;
+	private Date returnTime;
 	private int useDistance;
 	private int unpaidCharge;
 	private int PayNo;
+	private int point;
+	// 반납 시간 - 대여 시간 
+	private int time;
 	/**
 	 * 
 	 */
@@ -51,9 +54,7 @@ public class RentalVo {
 	public String getEndPlaceName() {
 		return EndPlaceName;
 	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
+	
 	public int getUseDistance() {
 		return useDistance;
 	}
@@ -90,9 +91,7 @@ public class RentalVo {
 	public void setEndPlaceName(String endPlaceName) {
 		EndPlaceName = endPlaceName;
 	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
+	
 	public void setUseDistance(int useDistance) {
 		this.useDistance = useDistance;
 	}
@@ -101,6 +100,24 @@ public class RentalVo {
 	}
 	public void setPayNo(int payNo) {
 		PayNo = payNo;
+	}
+	public Date getReturnTime() {
+		return returnTime;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public int getTime() {
+		return time;
+	}
+	public void setReturnTime(Date returnTime) {
+		this.returnTime = returnTime;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public void setTime(int time) {
+		this.time = time;
 	}
 	
 	

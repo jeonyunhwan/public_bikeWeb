@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+ 
+
+  <mapper namespace="bikeweb.dao.MyPageDao">
+  
+  <select id  = "getPointSize" resultType="int">
+           select count(*) from rentalInfo where id = #{id}
+  </select>
+   <select id  = "getTotalPointAPI" resultType="int">
+          select sum(ROUND((TO_DATE(returnTime, 'YYYY-MM-DD HH24:MI:SS')- TO_DATE(rentalTime, 'YYYY-MM-DD HH24:MI:SS')) * 24, 2)) from rentalInfo where id = #{id}
+  </select>
+  <!-- public int getTotalRentalInfoAPI(String id); -->
+  <select id="getRentalInfoAPI" resultType="int">
+          select weight from user1 where id = #{id}
+  </select>
+  
+  <select id="getRentalInfo" parameterType ="java.util.HashMap" resultType ="rental" >
+  select * from (
+	select ROWNUM rn,A.* from(
+	select bikeNo,startPlaceName,returnTime,endPlaceName,rentalTime from rentalInfo where id = #{id}
+	order by returnTime desc
+	) A
+	) WHERE rn BETWEEN #{vo.start,jdbcType=INTEGER} AND
+	#{vo.end,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 날짜 비교 총 카운트 -->
+  <select id  = "getPointSizeAnd" parameterType="java.util.HashMap" resultType="int">
+  <![CDATA[
+           select count(*) from rentalInfo where rentalTime >= to_date(#{sDate},'YYYY-MM-DD')
+                   AND returnTime <= TO_DATE(#{eDate}, 'YYYY-MM-DD')+1 and id = #{id}
+                      ]]>
+  </select>
+  <!-- 페이징 처리 계층형 구문 -->
+  <select id="getPointList" parameterType="java.util.HashMap" resultType = "rental">
+    <![CDATA[
+   select * from (
+    select ROWNUM rn,A.* from(
+        select rentalNo,ROUND((TO_DATE(returnTime, 'YYYY-MM-DD HH24:MI:SS')- TO_DATE(rentalTime, 'YYYY-MM-DD HH24:MI:SS')) * 24, 2)*10,
+        rentalTime from rentalInfo where rentalTime >= to_date(#{sDate},'YY-MM-DD')
+                   AND returnTime <= TO_DATE(#{eDate}, 'YYYY-MM-DD')+1 and id = #{id}
+                                 order by returnTime desc
+                              ) A
+                                   ) WHERE rn BETWEEN #{vo.start,jdbcType=INTEGER} AND #{vo.end,jdbcType=INTEGER}
+    ]]>
+  </select>
+  <select id="getRentalList" parameterType ="java.util.HashMap" resultType = "rental"> 
+  <![CDATA[
+  select * from (
+    select ROWNUM rn,A.* from (
+        select bikeNo,startPlaceName,returnTime,endPlaceName,rentalTime
+        from rentalInfo where rentalTime >= to_date(#{sDate},'yyyy-MM-DD')
+                   AND returnTime <= TO_DATE(#{eDate}, 'YYYY-MM-DD')+1 and id = #{id}
+                                 order by returnTime desc
+                              ) A
+                         ) WHERE rn BETWEEN #{vo.start,jdbcType=INTEGER} AND #{vo.end,jdbcType=INTEGER}
+   ]]>
+  </select>
+  <select id="getAllPointList" parameterType="java.util.HashMap" resultType ="rental">
+	select * from (
+	select ROWNUM rn,A.* from(
+	select rentalNo,id,ROUND((TO_DATE(returnTime, 'YYYY-MM-DD HH24:MI:SS')-
+	TO_DATE(rentalTime, 'YYYY-MM-DD HH24:MI:SS')) * 24, 2),rentalTime from rentalInfo where id = #{id}
+	order by returnTime desc
+	) A
+	) WHERE rn BETWEEN #{vo.start,jdbcType=INTEGER} AND
+	#{vo.end,jdbcType=INTEGER}
+  </select>
+  
+  <select id = "getCouponList" resultType = "coupon">
+      select COUPONCODE,insertDate,useOrNot,FromUser,ToUser,FromDate,TODATE from coupon where FromUser = #{id}
+  </select>
+  </mapper>
