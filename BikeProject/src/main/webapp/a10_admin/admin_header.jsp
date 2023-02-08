@@ -81,7 +81,7 @@ hr{
 <hr>
 <nav id="navbar" class="navbar navbar-expand-sm">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="${path }/b01_img/logo.png" width="50%"/></a>
+    <a class="navbar-brand" href="${path }/a10_admin/admin_main.jsp"><img src="${path }/b01_img/logo.png" width="50%"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -90,8 +90,8 @@ hr{
         <li class="nav-item dropdown">
              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">공지사항</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">공지사항 조회</a></li>
-            <li><a class="dropdown-item" href="#">공지사항 등록</a></li>
+            <li><a class="dropdown-item" href="${path}/adminNoticeList.do">공지사항 조회</a></li>
+            <li><a class="dropdown-item" href="${path }/a10_admin/adminNotice.jsp">공지사항 등록</a></li>
             </ul>
         </li>
         

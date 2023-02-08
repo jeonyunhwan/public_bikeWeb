@@ -8,6 +8,6 @@
  
    <insert id="insNotice" parameterType="notice">
    INSERT INTO notice values('notice'||notice_seq.nextval,
-   #{mgrid},sysdate,#{title},#{content},#{file}); 
+   #{mgrid},sysdate,#{title},#{content},#{imgfile})
    </insert>
   </mapper> 

@@ -58,6 +58,10 @@
 		$("#regBtn").click(function(){
 			$("form").submit()
 		})	
+		var msg = "${msg}"
+		if(msg!=''){
+			alert(msg)
+		}
 	});
 </script>
 </head>
@@ -71,7 +75,7 @@ request.setAttribute("mgrid", loginId);
 	<jsp:include page="${path }/a10_admin/admin_header.jsp"></jsp:include>
 <p class="fs-1 text-lg-start">공지사항 등록</p><br><br>
 <div class="formdiv">
-<form action="" method="post">
+<form action="${path }/insNotice.do" method="post" enctype="multipart/form-data">
 <input type="hidden" name="mgrid" value="${mgrid }">
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">제목</span>

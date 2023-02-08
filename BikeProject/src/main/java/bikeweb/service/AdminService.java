@@ -38,7 +38,13 @@ public class AdminService {
 	
 	public void insNotice(NoticeVo ins) {
 		String fname = uploadFile(ins.getReport());
-		ins.setImgfile(upload+fname); 
-		dao.insNotice(ins);
+		if(fname!=null && !fname.equals("")) {
+			upload = upload.replace("/", "\\\\");
+			ins.setImgfile(upload+fname); 
+			dao.insNotice(ins);
+		}else {
+			ins.setImgfile("");
+			dao.insNotice(ins);
+		}
 	};
 }
