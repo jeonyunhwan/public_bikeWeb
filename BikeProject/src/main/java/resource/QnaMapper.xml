@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+ 
+
+  <mapper namespace="bikeweb.dao.QnaDao">
+  	<!-- 제목, 내용 검색 / 상담 내역 리스트 조회 -->
+	<select id="qnaList" resultType="qna" parameterType="qna">
+		select *
+		from qna
+		where 1=1
+		and title like '%'||#{title}||'%'
+		or content like '%'||#{title}||'%'
+	</select>
+	<!-- 상세페이지 -->
+	<select id="qnaView" resultType="qna" parameterType="string">
+		select * from qna
+		WHERE qno like '%'||#{qno}||'%'
+	</select>
+  </mapper> 
