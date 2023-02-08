@@ -115,7 +115,7 @@
   </symbol>
 </svg>
 
-<div id="footer" class="container">
+<div id="footer" class="container" style="clear:both;">
   <footer class="py-5">
     <div id="footer_info" class="row">
       <div class="col mb-3">

@@ -28,4 +28,10 @@ public class NoticeController {
 		d.addAttribute("notice", service.noticeView(noticeno));
 		return "a31_notice\\noticeView.jsp";
 	}
+	// 안전수칙 조회
+	@RequestMapping("/guideLineList.do")
+	public String guideLineList(Model d) {
+		d.addAttribute("list", service.guideLineList());		
+		return "a31_notice\\guideline2.jsp";
+	}
 }

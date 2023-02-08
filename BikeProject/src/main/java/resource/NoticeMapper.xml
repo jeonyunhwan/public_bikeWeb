@@ -18,4 +18,10 @@
 		select * from notice 
 		WHERE noticeno like '%'||#{noticeno}||'%'
 	</select>
+	<!-- 안전수칙 조회 -->
+	<select id="guideLineList" resultType="guideLine" parameterType="guideLine">
+		select *
+		from guideline
+		where 1=1
+	</select>
   </mapper> 

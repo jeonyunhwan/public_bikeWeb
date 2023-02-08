@@ -52,6 +52,7 @@
 <body>
 	<div class="container">
 		<jsp:include page="/a00_main/a00_header.jsp"/>
+		<jsp:include page="/a00_main/a10_myPageMemberSub.jsp"></jsp:include>
 		
 		<div id="title" class="text-left">
 		  <h2>상담내역</h2>
@@ -79,7 +80,7 @@
 	    	<c:forEach var="qna" items="${list}">
 				<tr onclick="goDetail('${qna.qno}')">
 					<td>${qna.title}</td>
-					<td>미답변</td>
+					<td>${qna.answer}</td>
 					<td><fmt:formatDate value="${qna.writedate}"/></td>
 				</tr>
 	    	</c:forEach>

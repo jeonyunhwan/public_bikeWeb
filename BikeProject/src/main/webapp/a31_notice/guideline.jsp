@@ -19,9 +19,6 @@
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-	#title {
-    	padding: 50px 0 40px 0;
-	}
 	.d-block {
 		margin: auto;
 	}
@@ -60,12 +57,9 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="container" style="clear:both;">
 		<jsp:include page="/a00_main/a00_header.jsp"/>
-		
-		<div id="title" class="text-left">
-		  <h2>안전하게 자전거 이용하기</h2>
-		</div>
+		<jsp:include page="/a31_notice/guideLineMenu.jsp"/>
 		
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">

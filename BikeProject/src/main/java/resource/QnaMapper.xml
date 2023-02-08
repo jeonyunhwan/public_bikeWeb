@@ -18,4 +18,8 @@
 		select * from qna
 		WHERE qno like '%'||#{qno}||'%'
 	</select>
+	<!-- 문의 글 등록 -->
+	<insert id="insertQna" parameterType="qna">
+		INSERT INTO qna values('qna'||qna_seq.nextval,sysdate,#{id},#{title},#{content},#{imgfile},NULL,'미답변')			
+	</insert>
   </mapper> 

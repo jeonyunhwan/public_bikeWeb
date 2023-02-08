@@ -15,6 +15,7 @@
 		<typeAlias type="com.bikeWeb.vo.PayRentalTotVo" alias="payrentaltot"/>	
 		<typeAlias type="com.bikeWeb.vo.NoticeVo" alias="notice"/>	
 		<typeAlias type="com.bikeWeb.vo.QnaVo" alias="qna"/>		
+		<typeAlias type="com.bikeWeb.vo.GuideLineVo" alias="guideLine"/>				
 	</typeAliases>
 
 	<mappers>

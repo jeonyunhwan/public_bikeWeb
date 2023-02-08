@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bikeWeb.vo.GuideLineVo;
 import com.bikeWeb.vo.NoticeVo;
 
 import bikeweb.dao.NoticeDao;
@@ -23,4 +24,7 @@ public class NoticeService {
     public NoticeVo noticeView(String noticeno) {
     	return dao.noticeView(noticeno);
     }
+    public List<GuideLineVo> guideLineList(){
+        return dao.guideLineList();
+     }
 }

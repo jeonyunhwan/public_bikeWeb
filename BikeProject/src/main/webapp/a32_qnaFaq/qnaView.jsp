@@ -100,7 +100,8 @@
 			<div>
 				<p>
 				${qna.content}
-				<img src="${path}/b01_img/${qna.imgfile}" alt=""/> <!-- 첨부파일 경로 -->
+				<br>
+				<img src="${path}/z01_upload/${qna.imgfile}" alt=""/> <!-- 첨부파일 경로 -->
 				</p>
 			</div>
 			

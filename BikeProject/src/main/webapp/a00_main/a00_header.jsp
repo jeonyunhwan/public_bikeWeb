@@ -106,7 +106,7 @@ hr{
             <a class="nav-link" href="#">이용권 구매</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">문의/FAQ</a>
+            <a class="nav-link" href="${path}/a32_qnaFaq/insQna.jsp">문의/FAQ</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${path}/noticeList.do">공지사항</a>

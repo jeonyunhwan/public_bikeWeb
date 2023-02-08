@@ -2,6 +2,8 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class QnaVo {
 	private String qno;
 	private Date writedate;
@@ -16,6 +18,8 @@ public class QnaVo {
 	private String oftenqno;
 	private String div;
 	private String question;
+	// 파일 업로드
+	private MultipartFile report;
 	/**
 	 * 
 	 */
@@ -87,6 +91,12 @@ public class QnaVo {
 	}
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+	public MultipartFile getReport() {
+		return report;
+	}
+	public void setReport(MultipartFile report) {
+		this.report = report;
 	}
 	
 }
