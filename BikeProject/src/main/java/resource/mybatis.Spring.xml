@@ -13,7 +13,8 @@
 		<typeAlias type="com.bikeWeb.vo.RentalOfficeVo" alias="rentaloffice"/>
 		<typeAlias type="com.bikeWeb.vo.PayDaySeachVo" alias="paydayseach"/>
 		<typeAlias type="com.bikeWeb.vo.PayRentalTotVo" alias="payrentaltot"/>	
-		<typeAlias type="com.bikeWeb.vo.NoticeVo" alias="notice"/>			
+		<typeAlias type="com.bikeWeb.vo.NoticeVo" alias="notice"/>	
+		<typeAlias type="com.bikeWeb.vo.QnaVo" alias="qna"/>		
 	</typeAliases>
 
 	<mappers>
@@ -23,5 +24,6 @@
 		<mapper resource="resource/AdminMapper.xml"/> 
 		<mapper resource="resource/payMapper.xml"/> 
 		<mapper resource="resource/NoticeMapper.xml"/> 
+		<mapper resource="resource/QnaMapper.xml"/> 
 	</mappers>	
 </configuration>
