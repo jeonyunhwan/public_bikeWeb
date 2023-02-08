@@ -38,7 +38,7 @@ public class AdminService {
 	
 	public void insNotice(NoticeVo ins) {
 		String fname = uploadFile(ins.getReport());
-		ins.setFile(upload+fname); 
+		ins.setImgfile(upload+fname); 
 		dao.insNotice(ins);
 	};
 }

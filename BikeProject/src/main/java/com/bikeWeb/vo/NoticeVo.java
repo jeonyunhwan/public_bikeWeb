@@ -2,6 +2,8 @@ package com.bikeWeb.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class NoticeVo {
 	private String noticeno;
 	private String mgrid;
@@ -9,12 +11,22 @@ public class NoticeVo {
 	private String title;
 	private String content;
 	private String imgfile;
+	private MultipartFile report;
 	/**
 	 * 
 	 */
 	public NoticeVo() {
 		super();
 	}
+	
+	public MultipartFile getReport() {
+		return report;
+	}
+
+	public void setReport(MultipartFile report) {
+		this.report = report;
+	}
+
 	public String getNoticeno() {
 		return noticeno;
 	}
