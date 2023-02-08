@@ -55,36 +55,40 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>	
+		$("#regBtn").click(function(){
+			$("form").submit()
+		})	
 	});
 </script>
 </head>
 
 <body>
+<% 
+String loginId =(String)session.getAttribute("id"); // 로그인한 아이디 가져오기
+request.setAttribute("mgrid", loginId);
+%>
 <div class="container">
 	<jsp:include page="${path }/a10_admin/admin_header.jsp"></jsp:include>
 <p class="fs-1 text-lg-start">공지사항 등록</p><br><br>
-
 <div class="formdiv">
-<form>
+<form action="" method="post">
+<input type="hidden" name="mgrid" value="${mgrid }">
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
   <input name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="제목을 입력하세요">
 </div>
 
 <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px"></textarea>
+  <textarea name = "content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px"></textarea>
   <label for="floatingTextarea2">내용을 입력하세요</label>
 </div>
 <br>
 <div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02">
+  <input name="report" type="file" class="form-control" id="inputGroupFile02">
   <label class="input-group-text" for="inputGroupFile02">Upload</label>
 </div>
 <div class="input-button">
-<button class="nextbutton" type="button" style="margin-top: 1%;">등록</button>
+<button id="regBtn" class="nextbutton" type="button" style="margin-top: 1%;">등록</button>
 </div>
 </form>
 </div>

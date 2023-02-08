@@ -5,5 +5,9 @@
  
 
   <mapper namespace="bikeweb.dao.AdminDao">
-   
+ 
+   <insert id="insNotice" parameterType="notice">
+   INSERT INTO notice values('notice'||notice_seq.nextval,
+   #{mgrid},sysdate,#{title},#{content},#{file}); 
+   </insert>
   </mapper> 

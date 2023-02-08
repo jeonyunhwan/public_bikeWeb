@@ -1,5 +1,8 @@
 package bikeweb.dao;
 
-public interface AdminDao {
+import com.bikeWeb.vo.NoticeVo;
 
+public interface AdminDao {
+	
+	public void insNotice(NoticeVo ins);
 }
