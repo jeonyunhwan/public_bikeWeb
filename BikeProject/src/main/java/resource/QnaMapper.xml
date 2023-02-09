@@ -21,6 +21,19 @@
 	</select>
 	<!-- 문의 글 등록 -->
 	<insert id="insertQna" parameterType="qna">
-		INSERT INTO qna values('qna'||qna_seq.nextval,sysdate,#{id},#{title},#{content},#{imgfile},NULL,'미답변')			
+		INSERT INTO qna values('qna'||qna_seq.nextval,sysdate,#{id},#{title},#{content},#{imgfile},NULL,NULL)			
 	</insert>
+	<!-- 글 수정 -->
+	<update id= "updateQna" parameterType="qna">
+		update qna
+		set title = #{title},
+			content = #{content}
+	   	where qno like '%'||#{qno}||'%'
+	</update> 
+	<!-- 글 삭제 -->
+	<delete id="deleteQna" parameterType="string">
+		delete 
+		from qna 
+		where qno like '%'||#{qno}||'%'
+	</delete>	
   </mapper> 

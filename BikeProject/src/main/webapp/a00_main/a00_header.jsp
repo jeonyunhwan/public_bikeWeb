@@ -100,13 +100,13 @@ hr{
             <a class="nav-link" href="#">사업소개</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">대여소 조회</a>
+            <a class="nav-link" href="${path}/a30_rentalOffice/chkRentalOffice.jsp">대여소 조회</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">이용권 구매</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${path}/a32_qnaFaq/insQna.jsp">문의/FAQ</a>
+            <a class="nav-link" href="${path}/insertQnaFrm.do">문의/FAQ</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${path}/noticeList.do">공지사항</a>

@@ -37,7 +37,26 @@ public class QnaController {
 	@PostMapping("/insertQna.do")
 	public String insertQna(QnaVo ins, Model d){
 		service.insertQna(ins);
-		d.addAttribute("msg","저장했습니다.");
+		d.addAttribute("msg","저장되었습니다.");
 		return "a32_qnaFaq\\insQna.jsp";
+	}
+	// 글 수정
+	@GetMapping("uptQnaFrm.do")
+	public String uptQnaFrm(@RequestParam("qno") String qno, Model d){
+		d.addAttribute("qna", service.qnaView(qno));
+		return "a32_qnaFaq\\uptQna.jsp";
+	}
+	@PostMapping("/uptQna.do")
+	public String uptQna(QnaVo upt, Model d) {
+		service.updateQna(upt);
+		d.addAttribute("msg","수정되었습니다.");
+		return "a32_qnaFaq\\uptQna.jsp";
+	}
+	// 글 삭제
+	@GetMapping("/delQna.do")
+	public String delQna(@RequestParam("qno") String qno, Model d) {
+		service.deleteQna(qno);
+		d.addAttribute("msg", "삭제되었습니다.");
+		return "a32_qnaFaq\\qnaView.jsp";
 	}
 }

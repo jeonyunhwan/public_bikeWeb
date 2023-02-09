@@ -101,8 +101,10 @@
 		</section> <!-- content -->
 		
 		<section id="bottom">
+			<!--  
 	    	<button id="delBtn" class="btn btn-outline-danger" type="button">삭제</button>
 	    	<button id="uptBtn" class="btn btn-outline-success" type="button">수정</button>
+	    	-->
 	    	<button id="listBtn" class="btn btn-success" type="button">목록</button>
 		</section> <!-- bottom -->
 	</div>

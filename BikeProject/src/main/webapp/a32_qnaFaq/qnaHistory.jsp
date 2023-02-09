@@ -40,7 +40,7 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		$("#payManagerCommonTab td").eq(3).css({"background":"#001b31","color":"white"})
 	});
 	// 공지사항 상세화면
 	function goDetail(qno){
@@ -80,7 +80,12 @@
 	    	<c:forEach var="qna" items="${list}">
 				<tr onclick="goDetail('${qna.qno}')">
 					<td>${qna.title}</td>
-					<td>${qna.answer}</td>
+					<c:if test="${qna.answer==null}">
+						<td>미답변</td>
+					</c:if>
+					<c:if test="${qna.answer!=null}">
+						<td>답변완료</td>
+					</c:if>
 					<td><fmt:formatDate value="${qna.writedate}"/></td>
 				</tr>
 	    	</c:forEach>

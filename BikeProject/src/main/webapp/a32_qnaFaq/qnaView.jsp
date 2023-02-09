@@ -65,18 +65,23 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
+	var msg = "${msg}"
+	if(msg=="삭제되었습니다."){
+		alert(msg);
+		location.href = "${path}/qnaList.do";
+	}
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>	
+		var $qno = $('input[name=qno]').val();
 		$("#listBtn").click(function(){
 			location.href="${path}/qnaList.do"			
 		});
 		$("#delBtn").click(function(){
-			
+			if(confirm("삭제하시겠습니까?")){
+				location.href="${path}/delQna.do?qno="+$qno
+			}
 		});
 		$("#uptBtn").click(function(){
-			
+			location.href="${path}/uptQnaFrm.do?qno="+$qno
 		});
 		$("#repBtn").click(function(){
 			
@@ -92,6 +97,7 @@
 		<jsp:include page="/a00_main/a10_myPageMemberSub.jsp"/>
 		
 		<section id="top">	
+			<input type="hidden" name="qno" value="${qna.qno}"/>
 			<h3 id="qna_title" style="margin:0px;">${qna.title}</h3>
 			<p id="qna_date"><fmt:formatDate value="${qna.writedate}"/></p>
 		</section> <!-- top -->

@@ -47,4 +47,10 @@ public class QnaService {
 		}
 		
 	}
+	public void updateQna(QnaVo upt) {
+		dao.updateQna(upt);
+	}
+	public void deleteQna(String qno){
+		dao.deleteQna(qno);
+	}
 }
