@@ -71,6 +71,8 @@
 		location.href = "${path}/qnaList.do";
 	}
 	$(document).ready(function(){
+		$("#payManagerCommonTab td").eq(3).css({"background":"#001b31","color":"white"})
+		
 		var $qno = $('input[name=qno]').val();
 		$("#listBtn").click(function(){
 			location.href="${path}/qnaList.do"			
@@ -115,14 +117,14 @@
 		
 		<div id="answer">
 			<p>
-			관리자 답변 내용
+			${qna.answer}
 			</p>
 		</div>
 		
 		<section id="bottom">
 	    	<button id="delBtn" class="btn btn-outline-danger" type="button">삭제</button>
 	    	<button id="uptBtn" class="btn btn-outline-success" type="button">수정</button>
-	    	<button id="repBtn" class="btn btn-outline-success" type="button">답변</button>
+	    	<!-- <button id="repBtn" class="btn btn-outline-success" type="button">답변</button> -->
 	    	<button id="listBtn" class="btn btn-success" type="button">목록</button>
 		</section> <!-- bottom -->
 	</div>

@@ -69,7 +69,7 @@
 	  	<nav class="navbar navbar-expand-sm bg-transparent">
 		    <input name="title" value="${sch.title}" class="form-control mr-sm-5" placeholder="검색어를 입력해주세요" />
 		    <button id="schBtn" class="btn" type="submit">검색</button>
-		    <button id="regBtn" class="btn btn-outline-success" type="button">등록</button>
+		    <!-- <button id="regBtn" class="btn btn-outline-success" type="button">등록</button> -->
 	 	</nav>
 		</form>
 	   <table class="table table-hover">

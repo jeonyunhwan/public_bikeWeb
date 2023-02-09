@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상담 내역</title>
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
@@ -42,7 +42,7 @@
 	$(document).ready(function(){
 		$("#payManagerCommonTab td").eq(3).css({"background":"#001b31","color":"white"})
 	});
-	// 공지사항 상세화면
+	// 상담 내역 조회
 	function goDetail(qno){
 		location.href="${path}/qnaView.do?qno="+qno
 	}
