@@ -10,4 +10,16 @@
    INSERT INTO notice values('notice'||notice_seq.nextval,
    #{mgrid},sysdate,#{title},#{content},#{imgfile})
    </insert>
+   
+   <delete id="delNotice" parameterType="string">
+   delete from notice where noticeno = #{noticeno}
+   </delete>
+   
+   <select id="getImgfile" resultType="string" parameterType="string">
+   	select imgfile from notice where noticeno = #{noticeno}
+   </select>
+   
+	<select id="countQ" resultType="int" >
+	SELECT count(*) FROM qna WHERE answer IS null;
+	</select>
   </mapper> 

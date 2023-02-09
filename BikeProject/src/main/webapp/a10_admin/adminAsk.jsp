@@ -63,6 +63,10 @@
 </head>
 
 <body>
+<%
+String loginId = (String) session.getAttribute("id");
+request.setAttribute("loginId", loginId);
+%>
 <div class="container">
 	<jsp:include page="${path }/a10_admin/admin_header.jsp"></jsp:include>
 
@@ -72,19 +76,25 @@
 <form>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">사용자 아이디</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <input value="${qna.id }" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
+  <span class="input-group-text" id="inputGroup-sizing-default">답변자 아이디</span>
+  <input value="${qna.mgrid }" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
+  <input type="hidden" name="mgrid" value="${loginId }">  <!-- 수정버튼 누르면 현재 로그인한 관리자 아이디로 수정됨 -->
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;등록 일자&nbsp;&nbsp;&nbsp;</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <input value="${qna.writedate }" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;질문&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  <input name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
+  <input value="${qna.title }" name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly" >
 </div>
-
 <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px"></textarea>
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px" readonly="readonly">${qna.content }</textarea>
+</div>
+<br><br>
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px">${qna.answer }</textarea>
   <label for="floatingTextarea2">답변을 입력하세요</label>
 </div>
 <br>

@@ -19,23 +19,18 @@
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
 	td{text-align:center;}
-	button {
-	    background-color: #4cab6a;
-	    color: white;
-	}	
 	#title {
     	padding: 50px 0 40px 0;
 	}	
 	#schBtn {
-		margin-right: 10px;
-	}
+	    background-color: #4cab6a;
+	    color: white;
+	}	
 	#table-th {
 		background-color: #4cab6a;
 	    color: white;
 	}
-	.container{
-		margin-bottom: 10%;
-	}
+	
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -45,55 +40,54 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		// 관리자 공지사항 등록
-		$("#regBtn").click(function(){
-			location.href="${path}/a10_admin/adminNotice.jsp" 
-		})
-			
+
 	});
-		// 공지사항 상세화면
-		function goDetail(noticeno){
-			location.href="${path}/adminNoticeDetail.do?noticeno="+noticeno
-		}
-	
+	// 공지사항 상세화면
+	function goDetail(qno){
+		location.href="${path}/adminQnaAnswer.do?qno="+qno
+	}
 </script>
 </head>
 
 <body>
-<%
-String loginId = (String) session.getAttribute("id");
-%>
-<div class="container">
+	<div class="container">
 		<jsp:include page="/a10_admin/admin_header.jsp"/>
-	
+		
 		<div id="title" class="text-left">
-		  <h2>공지사항</h2>
+		  <h2>상담내역</h2>
 		</div>
-	
+		
 		<form id="frm01" class="form-group"  method="post">
 	  	<nav class="navbar navbar-expand-sm bg-transparent">
 		    <input name="title" value="${sch.title}" class="form-control mr-sm-5" placeholder="검색어를 입력해주세요" />
 		    <button id="schBtn" class="btn" type="submit">검색</button>
-		    <button id="regBtn" class="btn btn-outline-success" type="button">등록</button>
 	 	</nav>
 		</form>
 	   <table class="table table-hover">
-	   	<col width="70%">
-	   	<col width="30%">
+	   	<col width="50%">
+	   	<col width="25%">
+	   	<col width="25%">
 	    <thead>
 	    
 	      <tr id="table-th" class="table text-center">
 	        <th>제목</th>
+	        <th>답변상태</th>
 	        <th>날짜</th>
 	      </tr>
 	    </thead>	
 	    <tbody id="dyn_tbody">
-	    	<c:forEach var="notice" items="${list}">
-				<tr onclick="goDetail('${notice.noticeno}')">
-					<td>${notice.title}</td>
-					<td><fmt:formatDate value="${notice.writedate}"/></td>
+	    	<c:forEach var="qna" items="${list}">
+				<tr onclick="goDetail('${qna.qno}')">
+					<td>${qna.title}</td>
+					<c:if test="${qna.answer==null }">
+						<td>미답변</td>
+					</c:if>
+					<c:if test="${qna.answer!=null }">
+						<td>답변완료</td>
+					</c:if>
+					<td><fmt:formatDate value="${qna.writedate}"/></td>
 				</tr>
-	    	</c:forEach>  
+	    	</c:forEach>
 	    </tbody>
 		</table>  
 		  

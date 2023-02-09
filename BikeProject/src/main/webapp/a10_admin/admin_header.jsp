@@ -51,6 +51,7 @@ hr{
 	font-size: 0.8rem !important;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="/static/js/bootstrap.bundle.js"></script>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -59,7 +60,7 @@ hr{
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){// 안닫힘;;;;;;;;;;
+	$(document).ready(function(){
 		$('.dropdown-toggle').dropdown()
 	});
 </script>
@@ -68,12 +69,15 @@ hr{
 
 </head>
 <body>
+<%
+String adminId = (String)session.getAttribute("id");
 
+%>
 <div id="header" class="row">
  <div class="col-8"></div>
  <div class="col-4"> 
  	<a class="headertext" href="#">마이페이지</a>
- 	<a class="headertext" href="#">로그아웃</a>
+ 	<a class="headertext" href="${path}/logout.do">로그아웃</a>
  	<a class="headertext" href="#">알림</a>
  </div>
 </div>
@@ -111,7 +115,7 @@ hr{
             </ul>
         </li>
         <li class="nav-item dropdown">
-             <a class="nav-link" href="#">
+             <a class="nav-link" href="${path }/adminQnaList.do">
              1:1문의<span class="badge position-absolute top-23 start-85 translate-middle rounded-circle bg-danger">4</span></a>
         </li>
         <li class="nav-item ">

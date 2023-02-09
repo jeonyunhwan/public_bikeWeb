@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
 <style>
 	td{text-align:center;}
+	.container{
+		margin-bottom: 10%;
+	}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -32,14 +35,18 @@
 			location.href="${path}/adminNoticeList.do"			
 		});
 		$("#delBtn").click(function(){
-			
+			if(confirm("삭제하시겠습니까?")){
+				$("#delFrm").submit()
+			}
 		});
 		$("#uptBtn").click(function(){
 			
 		});
 		
-		var path = "${notice.imgfile}"
-		console.log(path)
+		var msg="${msg}"
+		if(msg!=''){
+			alert(msg)
+		}
 	});
 </script>
 </head>
@@ -61,12 +68,15 @@
 			<div>
 				<p>
 				${notice.content}
-				<img src="${notice.imgfile}" alt=""/> <!-- 첨부파일 경로 -->
+				<img src="${path }/z01_upload/${notice.imgfile}" alt=""/> <!-- 첨부파일 경로 -->
 				 
 				</p>
 			</div>
 		</section> <!-- content -->
 		
+		<form id="delFrm" method="post" action="${path }/delNotice.do"> <!-- 삭제 하기 위해서 notice 번호 넘기기 -->
+		<input type="hidden" name="noticeno" value="${notice.noticeno }">
+		</form>
 		<section id="bottom">
 	    	<button id="delBtn" class="btn btn-outline-danger" type="button">삭제</button>
 	    	<button id="uptBtn" class="btn btn-outline-success" type="button">수정</button>

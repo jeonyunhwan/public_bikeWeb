@@ -69,11 +69,7 @@
 </head>
 	
 <body>
-<%
-String adminId = (String)session.getAttribute("id");
-request.setAttribute("adminIn", adminId);
-out.print(adminId);
-%>
+
 <div class="container">
 	<jsp:include page="${path }/a10_admin/admin_header.jsp"></jsp:include>
 </div>	
