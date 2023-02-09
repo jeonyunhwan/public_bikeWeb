@@ -68,4 +68,14 @@ public class AdminController {
 		d.addAttribute("qna", service3.qnaView(qno));
 		return "a10_admin\\adminAsk.jsp";
 	}
+	
+	// 답변달기
+	@PostMapping("/adminUptQna.do")
+	public String adminUptQna(@ModelAttribute("upt")QnaVo upt,Model d) {
+		service.uptQna(upt);
+		d.addAttribute("msg","답글 처리되었습니다.");
+		d.addAttribute("qna", service3.qnaView(upt.getQno()));
+		return "a10_admin\\adminAsk.jsp";
+	}
+
 }

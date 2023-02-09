@@ -57,6 +57,8 @@ public class AdminService {
 		}
 		dao.delNotice(noticeno);
 	};
-	
 
+	public void uptQna(QnaVo upt) {
+		dao.uptQna(upt);
+	};
 }

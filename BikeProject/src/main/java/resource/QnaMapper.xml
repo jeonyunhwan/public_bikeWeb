@@ -12,6 +12,7 @@
 		where 1=1
 		and title like '%'||#{title}||'%'
 		or content like '%'||#{title}||'%'
+		ORDER BY writedate desc
 	</select>
 	<!-- 상세페이지 -->
 	<select id="qnaView" resultType="qna" parameterType="string">

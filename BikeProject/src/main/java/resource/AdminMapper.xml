@@ -19,7 +19,7 @@
    	select imgfile from notice where noticeno = #{noticeno}
    </select>
    
-	<select id="countQ" resultType="int" >
-	SELECT count(*) FROM qna WHERE answer IS null;
-	</select>
+	<update id="uptQna" parameterType="qna">
+	UPDATE qna SET mgrid=#{mgrid},answer=#{answer} WHERE qno=#{qno}
+	</update>
   </mapper> 

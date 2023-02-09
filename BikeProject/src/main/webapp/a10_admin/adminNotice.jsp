@@ -46,6 +46,10 @@
 	justify-content: center;
 	align-items: center;
 }
+.nextbutton.green{
+	border: green solid 1px !important;
+	background: green !important;
+}
 </style>
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
@@ -62,6 +66,9 @@
 		if(msg!=''){
 			alert(msg)
 		}
+		$("#backBtn").click(function(){
+			location.href="${path}/adminNoticeList.do";
+		})
 	});
 </script>
 </head>
@@ -93,6 +100,7 @@ request.setAttribute("mgrid", loginId);
 </div>
 <div class="input-button">
 <button id="regBtn" class="nextbutton" type="button" style="margin-top: 1%;">등록</button>
+<button id="backBtn" class="nextbutton green" type="button" style="margin-top: 1%;">목록</button>
 </div>
 </form>
 </div>

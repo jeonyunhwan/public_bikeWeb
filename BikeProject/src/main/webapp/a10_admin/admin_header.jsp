@@ -61,8 +61,10 @@ hr{
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$('.dropdown-toggle').dropdown()
 	});
+
 </script>
 <html>
 <head >
@@ -71,7 +73,7 @@ hr{
 <body>
 <%
 String adminId = (String)session.getAttribute("id");
-
+out.print(adminId);
 %>
 <div id="header" class="row">
  <div class="col-8"></div>
@@ -116,7 +118,7 @@ String adminId = (String)session.getAttribute("id");
         </li>
         <li class="nav-item dropdown">
              <a class="nav-link" href="${path }/adminQnaList.do">
-             1:1문의<span class="badge position-absolute top-23 start-85 translate-middle rounded-circle bg-danger">4</span></a>
+             1:1문의<span id="countQ" class="badge position-absolute top-23 start-85 translate-middle rounded-circle bg-danger"></span></a>
         </li>
         <li class="nav-item ">
              <a class="nav-link " href="#">회원정보</a>

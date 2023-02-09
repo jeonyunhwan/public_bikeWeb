@@ -41,6 +41,10 @@
 	margin-left: 0; margin-right: 0;
 	font-weight: bold;
 }
+.nextbutton.green{
+	border: green solid 1px !important;
+	background: green !important;
+}
 .input-button{
 	display: flex;
 	justify-content: center;
@@ -55,9 +59,16 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>	
+		var msg="${msg}"
+		if(msg!=''){
+			alert(msg)
+		}
+		$("#uptBtn").click(function(){
+			$("form").submit()
+		})	
+		$("#backBtn").click(function(){
+			location.href="${path}/adminQnaList.do";
+		})
 	});
 </script>
 </head>
@@ -73,13 +84,14 @@ request.setAttribute("loginId", loginId);
 <p class="fs-1 text-lg-start">1:1 문의 답변</p><br><br>
 
 <div class="formdiv">
-<form>
+<form enctype="multipart/form-data" method="post" action="${path }/adminUptQna.do">
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">사용자 아이디</span>
   <input value="${qna.id }" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
   <span class="input-group-text" id="inputGroup-sizing-default">답변자 아이디</span>
   <input value="${qna.mgrid }" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly="readonly">
   <input type="hidden" name="mgrid" value="${loginId }">  <!-- 수정버튼 누르면 현재 로그인한 관리자 아이디로 수정됨 -->
+  <input type="hidden" name="qno" value="${qna.qno }">  <!-- 문서번호도 같이 넘겨서 수정하기 -->
 </div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;등록 일자&nbsp;&nbsp;&nbsp;</span>
@@ -93,17 +105,15 @@ request.setAttribute("loginId", loginId);
   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px" readonly="readonly">${qna.content }</textarea>
 </div>
 <br><br>
+<img src="${path}/z01_upload/${qna.imgfile}" alt=""/> <!-- 첨부파일 경로 -->
 <div class="form-floating">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px">${qna.answer }</textarea>
+  <textarea name="answer" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 350px" required>${qna.answer }</textarea>
   <label for="floatingTextarea2">답변을 입력하세요</label>
 </div>
 <br>
-<div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02">
-  <label class="input-group-text" for="inputGroupFile02">Upload</label>
-</div>
 <div class="input-button">
-<button class="nextbutton" type="button" style="margin-top: 1%;">등록</button>
+<button id="uptBtn" class="nextbutton" type="button" style="margin-top: 1%;">등록</button>
+<button id="backBtn" class="nextbutton green" type="button" style="margin-top: 1%;">목록</button>
 </div>
 </form>
 </div>
